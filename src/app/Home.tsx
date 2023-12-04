@@ -13,7 +13,7 @@ export default function Home() {
     async function prepare() {
       try {
         await Font.loadAsync({
-          'MontserratAlternates-Bold': require('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap')
+          'MontserratAlternates-Bold': require('../assets/fonts/MontserratAlternates-Bold.ttf')
         });
       } catch (e) {
         console.warn(e);
