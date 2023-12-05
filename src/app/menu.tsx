@@ -1,5 +1,5 @@
 import { View } from 'react-native';
 
-export const Menu = () => {
+export default function Menu() {
   return <View>This is Menu</View>;
-};
+}

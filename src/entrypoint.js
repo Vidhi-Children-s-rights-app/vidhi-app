@@ -1,3 +1,3 @@
 import { registerRootComponent } from 'expo';
-import Home from './app/Home';
+import Home from './app';
 registerRootComponent(Home);

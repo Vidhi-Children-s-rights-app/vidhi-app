@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View } from 'react-native';
+import { Button, Pressable, SafeAreaView, Text, View } from 'react-native';
 import { ButtonColorVariants, ButtonSizeVariants } from '../constants';
 
 import Svg, { Path, Rect } from 'react-native-svg';
