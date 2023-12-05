@@ -40,7 +40,7 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds extended={false} />
-        <Link href="/menu" asChild>
+        <Link href="/menu">
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>

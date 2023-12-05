@@ -1,5 +1,5 @@
-import { View } from 'react-native';
+import { Text } from 'react-native';
 
 export default function Menu() {
-  return <View>This is Menu</View>;
+  return <Text>This is Menu</Text>;
 }
