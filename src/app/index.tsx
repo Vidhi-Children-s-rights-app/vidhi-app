@@ -1,14 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { PrimaryButton } from '../components/PrimaryButton';
-import { HomeScreenGradient } from '../constants';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
+// import { useRouter } from 'expo-router';
 import { Link } from 'expo-router';
 
-export default function Page() {
+import { Clouds } from '../components/ui/Clouds';
+import { PrimaryButton } from '../components/PrimaryButton';
+import { HomeScreenGradient } from '../constants';
+
+export default function Home() {
   const [appIsReady, setAppIsReady] = useState(false);
   useEffect(() => {
     async function prepare() {
@@ -35,14 +37,13 @@ export default function Page() {
     return null;
   }
 
+  // const router = useRouter();
+
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={HomeScreenGradient}
-        style={styles.gradient}
-      >
-        <Link href="/settings">
+      <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
+        <Clouds extended={false} />
+        <Link href="/menu" asChild>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   gradient: {
     flex: 1,
     width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center'
   }
 });
