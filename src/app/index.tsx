@@ -5,11 +5,12 @@ import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'expo-router';
 
-import { Clouds } from '../components/ui/Clouds';
+import { Clouds, type StateProps } from '../components/ui/Clouds';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { HomeScreenGradient } from '../constants';
 
 export default function Home() {
+  const [cloudState, setCloudState] = useState<StateProps>('open');
   const [appIsReady, setAppIsReady] = useState(false);
   useEffect(() => {
     async function prepare() {
@@ -39,8 +40,8 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
-        <Clouds extended={false} />
-        <Link href="/menu">
+        <Clouds currentState={cloudState} />
+        <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    position: 'relative'
   }
 });

@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { HomeScreenGradient } from '../../constants';
 import { PrimaryButton } from '../../components/PrimaryButton';
 import { Link } from 'expo-router';

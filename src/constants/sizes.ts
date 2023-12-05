@@ -1,7 +1,7 @@
 export const ButtonSizeVariants = {
   large: {
-    width: 300,
-    height: 100,
-    fontSize: 25
+    width: 240,
+    height: 80,
+    fontSize: 20
   }
 };

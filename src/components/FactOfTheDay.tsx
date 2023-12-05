@@ -3,7 +3,7 @@ import React from 'react';
 
 const FactOfTheDay = () => {
   return (
-    <View>
+    <View style={{ position: 'absolute', top: 0 }}>
       <Text>FactOfTheDay</Text>
     </View>
   );
