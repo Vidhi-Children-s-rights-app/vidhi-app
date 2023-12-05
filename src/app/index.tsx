@@ -8,6 +8,7 @@ import { Link } from 'expo-router';
 import { Clouds, type StateProps } from '../components/ui/Clouds';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { HomeScreenGradient } from '../constants';
+import FactOfTheDay from '../components/FactOfTheDay';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateProps>('open');
@@ -16,7 +17,8 @@ export default function Home() {
     async function prepare() {
       try {
         await Font.loadAsync({
-          'MontserratAlternates-Bold': require('../assets/fonts/MontserratAlternates-Bold.ttf')
+          'MontserratAlternates-Bold': require('../assets/fonts/MontserratAlternates-Bold.ttf'),
+          'JockeyOne-Regular': require('../assets/fonts/JockeyOne-Regular.ttf')
         });
       } catch (e) {
         console.warn(e);
@@ -41,6 +43,7 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
+        <FactOfTheDay />
         <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey

@@ -3,18 +3,9 @@ import { MotiView } from 'moti';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 const state = {
-  default: {
-    from: -180,
-    to: -100
-  },
-  open: {
-    from: -180,
-    to: -20
-  },
-  closed: {
-    from: -180,
-    to: -100
-  }
+  default: -100,
+  open: -20,
+  closed: -100
 };
 
 export type StateProps = keyof typeof state;
@@ -29,8 +20,8 @@ export const Clouds: React.FC<{ currentState: StateProps }> = ({
         width: '100%',
         position: 'relative'
       }}
-      from={{ top: state[currentState].from }}
-      animate={{ top: state[currentState].to }}
+      from={{ top: -180}}
+      animate={{ top: state[currentState] }}
     >
       <Svg
         width="100%"
