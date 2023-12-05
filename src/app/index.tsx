@@ -3,7 +3,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
-// import { useRouter } from 'expo-router';
 import { Link } from 'expo-router';
 
 import { Clouds } from '../components/ui/Clouds';
@@ -36,8 +35,6 @@ export default function Home() {
   if (!appIsReady) {
     return null;
   }
-
-  // const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
