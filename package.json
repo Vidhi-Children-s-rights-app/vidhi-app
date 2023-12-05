@@ -1,7 +1,7 @@
 {
   "name": "vidhi",
   "version": "1.0.0",
-  "main": "src/entrypoint.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

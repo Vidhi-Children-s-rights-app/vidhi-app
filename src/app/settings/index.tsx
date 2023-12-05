@@ -14,7 +14,7 @@ export default function Settings() {
       >
         <Link href="/settings">
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
-            start your settings
+            this is settings
           </PrimaryButton>
         </Link>
       </LinearGradient>

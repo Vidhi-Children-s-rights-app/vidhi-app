@@ -8,7 +8,7 @@ import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'expo-router';
 
-export default function Home() {
+export default function Page() {
   const [appIsReady, setAppIsReady] = useState(false);
   useEffect(() => {
     async function prepare() {
