@@ -1,4 +1,9 @@
 export const HomeScreenGradient = ['#4DCEFF', '#CDF1FF'];
+export const FOTD = {
+  HeaderBackground: '#FFF0CA',
+  HeaderShadow: '#D0C197',
+  TextColor: '#FF7A35'
+};
 export const ButtonColorVariants = {
   yellow: { background: '#FFF36E', shadow: '#FFDE2F', text: '#917A26' }
 };
