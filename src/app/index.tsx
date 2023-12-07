@@ -1,15 +1,15 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'expo-router';
 
 import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { HomeScreenGradient } from '../constants';
 import FactOfTheDay from '../components/FactOfTheDay';
+import { HomeScreenGradient } from '../constants';
 import type { CloudStateType } from "../types";
+import { loadFonts } from '../assets/fonts';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<CloudStateType>('default');
@@ -17,10 +17,7 @@ export default function Home() {
   useEffect(() => {
     async function prepare() {
       try {
-        await Font.loadAsync({
-          'MontserratAlternates-Bold': require('../assets/fonts/MontserratAlternates-Bold.ttf'),
-          'JockeyOne-Regular': require('../assets/fonts/JockeyOne-Regular.ttf')
-        });
+        await loadFonts();
       } catch (e) {
         console.warn(e);
       } finally {

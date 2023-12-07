@@ -47,7 +47,7 @@ const FactOfTheDay: React.FC<Props> = ({
         from={detailPannel[cloudState].from}
         animate={detailPannel[cloudState].to}
       >
-        <Text style={styles.infoText}>{ description }</Text>
+        <Text style={styles.infoText}>{description}</Text>
       </MotiView>
     </View>
   );
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headerText: {
-    fontFamily: 'JockeyOne-Regular',
+    fontFamily: 'heading',
     fontSize: 35,
     paddingHorizontal: '5%',
     color: FOTD.TextColor
@@ -87,10 +87,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderLeftWidth: 2,
     borderRadius: 20,
+    zIndex: 15,
     margin: 30
   },
   infoText: {
-    fontFamily: 'MontserratAlternates-Bold',
+    fontFamily: 'regular',
     fontSize: 15,
     padding: '5%',
     color: 'orange'

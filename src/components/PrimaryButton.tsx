@@ -55,7 +55,7 @@ export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
       <Text
         style={{
           fontSize: ButtonSizeVariants[variant.size].fontSize,
-          fontFamily: 'MontserratAlternates-Bold',
+          fontFamily: 'regular',
           color: ButtonColorVariants[variant.color].text
         }}
       >
