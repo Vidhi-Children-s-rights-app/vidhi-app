@@ -1,16 +1,9 @@
-import { View } from 'react-native';
 import { MotiView } from 'moti';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
+import { CloudState } from '../../constants';
+import { CloudStateType } from '../../types';
 
-const state = {
-  default: -100,
-  open: -20,
-  closed: -100
-};
-
-export type StateProps = keyof typeof state;
-
-export const Clouds: React.FC<{ currentState: StateProps }> = ({
+export const Clouds: React.FC<{ currentState: CloudStateType }> = ({
   currentState
 }) => {
   return (
@@ -18,10 +11,11 @@ export const Clouds: React.FC<{ currentState: StateProps }> = ({
       style={{
         height: '50%',
         width: '100%',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 10
       }}
-      from={{ top: -180 }}
-      animate={{ top: state[currentState] }}
+      from={{ top: CloudState[currentState].from }}
+      animate={{ top: CloudState[currentState].to }}
     >
       <Svg
         width="100%"
