@@ -1,18 +1,29 @@
 import Svg, { Path, Defs, Stop, LinearGradient } from 'react-native-svg';
+import { ParallaxStateType } from '../../types';
+import { MotiView } from 'moti';
+import { BaloonState } from '../../constants';
 
-export const MainBalloon = () => (
+export const MainBalloon: React.FC<{ currentState: ParallaxStateType }> = ({
+  currentState
+}) => {
+  return (
+    <MotiView
+      style={{
+        height: 400,
+        width: 400,
+        top: '40%',
+        left: '10%',
+        position: 'absolute'
+      }}
+      from={{ top: BaloonState[currentState].from }}
+      animate={{ top: BaloonState[currentState].to }}
+      transition={{duration:2000,type:'spring'}}
+    >
   <Svg
     width="30%"
     height="30%"
     viewBox="0 0 183 219"
     fill="none"
-    style={{
-      height: 20,
-      width: 20,
-      top: '40%',
-      left: '10%',
-      position: 'absolute'
-    }}
   >
     <Path
       d="M72.961 201.701h35.711v7.305c0 5.523-4.477 10-10 10h-15.71c-5.523 0-10-4.477-10-10v-7.305z"
@@ -57,4 +68,6 @@ export const MainBalloon = () => (
       </LinearGradient>
     </Defs>
   </Svg>
+  </MotiView>
 );
+}

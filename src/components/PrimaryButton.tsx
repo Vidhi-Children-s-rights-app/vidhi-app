@@ -1,17 +1,20 @@
-import { Button, Pressable, SafeAreaView, Text, View } from 'react-native';
+import { Button, GestureResponderEvent, Pressable, SafeAreaView, Text, View } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { ButtonColorVariants, ButtonSizeVariants } from '../constants';
+import { GestureEvent } from 'react-native-gesture-handler';
 
 type Props = {
   variant: {
     size: keyof typeof ButtonSizeVariants;
     color: keyof typeof ButtonColorVariants;
   };
+  onTap?:((event: GestureResponderEvent) => void) | undefined;
+  onHold?:((event: GestureResponderEvent) => void) | undefined;
   children: React.ReactNode;
 }
 
-export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
+export const PrimaryButton: React.FC<Props> = ({ variant,onTap, onHold, children }) => {
   return (
     <View
       style={{
@@ -21,6 +24,8 @@ export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
         justifyContent: 'center',
         position: 'relative'
       }}
+      onTouchEnd={onTap}
+      onTouchStart={onHold}
     >
       <Svg
         width="100%"

@@ -1,4 +1,4 @@
-import { CloudStateType } from "../types";
+import { ParallaxStateType } from "../types";
 
 export const ButtonSizeVariants = {
   large: {
@@ -8,7 +8,7 @@ export const ButtonSizeVariants = {
   }
 };
 
-export const CloudState: Record<CloudStateType, Record<'from' | 'to', number>> = {
+export const CloudState: Record<ParallaxStateType, Record<'from' | 'to', number>> = {
   default: {
     from: -180,
     to: -100
@@ -19,11 +19,25 @@ export const CloudState: Record<CloudStateType, Record<'from' | 'to', number>> =
   },
   closed: {
     from: -20,
-    to: -100
+    to: -600
+  }
+};
+export const BaloonState: Record<ParallaxStateType, Record<'from' | 'to', number>> = {
+  default: {
+    from: 450,
+    to: 400
+  },
+  open: {
+    from: -100,
+    to: 20
+  },
+  closed: {
+    from: -20,
+    to: -200
   }
 };
 
-export const detailPannel: Record<CloudStateType, Record<'from' | 'to', object>> = {
+export const detailPannel: Record<ParallaxStateType, Record<'from' | 'to', object>> = {
   default: {
     from: { opacity: 0, top: -100 },
     to: { opacity: 0, top: -100 }
