@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
@@ -44,7 +45,10 @@ export default function Home() {
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
         <FactOfTheDay />
-        <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
+        <Link
+          href="/modules/module1"
+          style={{ position: 'absolute', bottom: '10%' }}
+        >
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>

@@ -20,7 +20,7 @@ export const Clouds: React.FC<{ currentState: StateProps }> = ({
         width: '100%',
         position: 'relative'
       }}
-      from={{ top: -180}}
+      from={{ top: -180 }}
       animate={{ top: state[currentState] }}
     >
       <Svg

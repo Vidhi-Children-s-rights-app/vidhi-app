@@ -9,7 +9,7 @@ type Props = {
     color: keyof typeof ButtonColorVariants;
   };
   children: React.ReactNode;
-}
+};
 
 export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
   return (
