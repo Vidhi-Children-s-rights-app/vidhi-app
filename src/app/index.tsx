@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
@@ -8,7 +9,7 @@ import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
 import FactOfTheDay from '../components/FactOfTheDay';
 import { HomeScreenGradient } from '../constants';
-import type { CloudStateType } from "../types";
+import type { CloudStateType } from '../types';
 import { loadFonts } from '../assets/fonts';
 
 export default function Home() {
@@ -41,7 +42,11 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
-        <FactOfTheDay description={'sau dhai whd aw uio sefy saaatw hayu rg eua sy'} cloudState={cloudState} setCloudState={setCloudState} />
+        <FactOfTheDay
+          description={'sau dhai whd aw uio sefy saaatw hayu rg eua sy'}
+          cloudState={cloudState}
+          setCloudState={setCloudState}
+        />
         <MainBalloon />
         <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
