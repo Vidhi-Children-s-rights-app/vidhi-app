@@ -1,9 +1,9 @@
 import { MotiView } from 'moti';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 import { CloudState } from '../../constants';
-import { CloudStateType } from '../../types';
+import { StateType } from '../../types';
 
-export const Clouds: React.FC<{ currentState: CloudStateType }> = ({
+export const Clouds: React.FC<{ currentState: StateType }> = ({
   currentState
 }) => {
   return (

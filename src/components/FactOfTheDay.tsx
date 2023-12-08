@@ -1,19 +1,18 @@
 import {
   Text,
   StyleSheet,
-  ImageBackground,
-  View,
-  Pressable
+  Image,
+  View
 } from 'react-native';
 import { MotiView } from 'moti';
-import { FOTD, detailPannel } from '../constants';
+import { FOTD, DetailPannel } from '../constants';
 import { mascot_1 } from '../assets/images';
-import { CloudStateDispatcher, CloudStateType } from '../types';
+import { StateDispatcher, StateType } from '../types';
 
 type Props = {
   description: string;
-  cloudState: CloudStateType;
-  setCloudState: CloudStateDispatcher;
+  cloudState: StateType;
+  setCloudState: StateDispatcher;
 };
 
 const FactOfTheDay: React.FC<Props> = ({
@@ -32,20 +31,15 @@ const FactOfTheDay: React.FC<Props> = ({
         style={styles.headerBody}
         from={{ scale: 0.5 }}
         animate={{ scale: 1 }}
+        onTouchEnd={handler}
       >
         <Text style={styles.headerText}>Did you know?</Text>
-
-        <ImageBackground source={mascot_1} style={styles.image}>
-          <Pressable
-            style={{ height: '100%', width: '100%' }}
-            onPress={handler}
-          />
-        </ImageBackground>
+        <Image source={mascot_1} style={styles.image} />
       </MotiView>
       <MotiView
         style={styles.infoBody}
-        from={detailPannel[cloudState].from}
-        animate={detailPannel[cloudState].to}
+        from={DetailPannel[cloudState].from as any}
+        animate={DetailPannel[cloudState].to as any}
       >
         <Text style={styles.infoText}>{description}</Text>
       </MotiView>

@@ -10,3 +10,5 @@ export const ButtonColorVariants = {
   blue: { background: '#6ED3FF', shadow: '#4AA4CB', text: '#176F95' },
   orange: { background: '#FF8660', shadow: '#D7471B', text: '#711B00' }
 };
+
+export const BalloonColors = ['#8D57D4'];

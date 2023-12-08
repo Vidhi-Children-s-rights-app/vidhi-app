@@ -3,17 +3,19 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 
 import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
 import FactOfTheDay from '../components/FactOfTheDay';
 import { HomeScreenGradient } from '../constants';
-import type { CloudStateType } from '../types';
+import type { StateType } from '../types';
 import { loadFonts } from '../assets/fonts';
+import { Balloons } from '../components/ui/Balloons';
 
 export default function Home() {
-  const [cloudState, setCloudState] = useState<CloudStateType>('default');
+  const [cloudState, setCloudState] = useState<StateType>('default');
+  const [pauseBalloon, setPauseBalloon] = useState<boolean>(false);
   const [appIsReady, setAppIsReady] = useState(false);
   useEffect(() => {
     async function prepare() {
@@ -38,21 +40,34 @@ export default function Home() {
     return null;
   }
 
+  const startParllax = () => {
+    console.log('Routing...');
+    setCloudState('closed');
+    setPauseBalloon(false);
+    const routing = setTimeout(() => router.push('/menu'), 700);
+    return () => {
+      clearTimeout(routing);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
         <FactOfTheDay
-          description={'sau dhai whd aw uio sefy saaatw hayu rg eua sy'}
+          description={
+            'Minimum age for employment of children is 14 years. According to the Child Labour Law, making children less than the age of 14 work is considered a crime.'
+          }
           cloudState={cloudState}
           setCloudState={setCloudState}
         />
-        <MainBalloon />
-        <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
-          <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
-            start your journey
-          </PrimaryButton>
-        </Link>
+        <MainBalloon pauseBalloon={pauseBalloon} setPauseBalloon={setPauseBalloon} /><Balloons />
+        <PrimaryButton
+          variant={{ size: 'large', color: 'yellow' }}
+          onTap={startParllax}
+        >
+          start your journey
+        </PrimaryButton>
       </LinearGradient>
     </SafeAreaView>
   );

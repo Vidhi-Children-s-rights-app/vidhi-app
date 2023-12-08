@@ -4,7 +4,7 @@ import Svg, { Ellipse } from 'react-native-svg';
 
 const shades = ['#9AB7E1', '#B0CAF1', '#7599D0'];
 
-export const EmergencyMessage = () => {
+export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
   return (
     <MotiView
       style={{
@@ -14,7 +14,8 @@ export const EmergencyMessage = () => {
         top: '10%',
         left: '140%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 20
       }}
     >
       <Svg width={'200%'} height={'200%'} viewBox="0 0 574 379" fill="none">
@@ -72,7 +73,7 @@ export const EmergencyMessage = () => {
       </Svg>
       <Text
         style={{
-          color: 'white',
+          color: '#EFEFEF',
           position: 'absolute',
           fontFamily: 'regular',
           left: 15,
@@ -81,8 +82,12 @@ export const EmergencyMessage = () => {
       >
         The child helpline number is{' '}
         <Link
-          style={{ fontSize: 15, textDecorationLine: 'underline' }}
-          href="https://google.com"
+          style={{
+            fontSize: 15,
+            textDecorationLine: 'underline',
+            color: 'white'
+          }}
+          href="tel:$1098"
         >
           1098
         </Link>

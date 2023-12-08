@@ -1,4 +1,4 @@
-import { Button, Pressable, SafeAreaView, Text, View } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { ButtonColorVariants, ButtonSizeVariants } from '../constants';
@@ -8,19 +8,23 @@ type Props = {
     size: keyof typeof ButtonSizeVariants;
     color: keyof typeof ButtonColorVariants;
   };
+  onTap: () => void;
   children: React.ReactNode;
 };
 
-export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
+export const PrimaryButton: React.FC<Props> = ({ variant, onTap, children }) => {
   return (
-    <View
+    <Pressable
       style={{
         width: ButtonSizeVariants[variant.size].width,
         height: ButtonSizeVariants[variant.size].height,
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative'
+        position: 'relative',
+        marginBottom: '20%',
+        zIndex: 15
       }}
+      onPress={onTap}
     >
       <Svg
         width="100%"
@@ -61,6 +65,6 @@ export const PrimaryButton: React.FC<Props> = ({ variant, children }) => {
       >
         {children}
       </Text>
-    </View>
+    </Pressable>
   );
 };
