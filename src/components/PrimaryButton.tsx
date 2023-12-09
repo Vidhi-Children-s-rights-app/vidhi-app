@@ -1,4 +1,6 @@
-import { Pressable, Text } from 'react-native';
+import { useMemo } from 'react';
+import { Text } from 'react-native';
+import { MotiPressable } from 'moti/interactions';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { ButtonColorVariants, ButtonSizeVariants } from '../constants';
@@ -14,7 +16,7 @@ type Props = {
 
 export const PrimaryButton: React.FC<Props> = ({ variant, onTap, children }) => {
   return (
-    <Pressable
+    <MotiPressable
       style={{
         width: ButtonSizeVariants[variant.size].width,
         height: ButtonSizeVariants[variant.size].height,
@@ -25,6 +27,17 @@ export const PrimaryButton: React.FC<Props> = ({ variant, onTap, children }) => 
         zIndex: 15
       }}
       onPress={onTap}
+      animate={useMemo(
+        () =>
+          ({ pressed }) => {
+            'worklet';
+
+            return {
+              scale: pressed ? 0.8 : 1
+            };
+          },
+        []
+      )}
     >
       <Svg
         width="100%"
@@ -65,6 +78,6 @@ export const PrimaryButton: React.FC<Props> = ({ variant, onTap, children }) => 
       >
         {children}
       </Text>
-    </Pressable>
+    </MotiPressable>
   );
 };

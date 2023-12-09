@@ -17,6 +17,16 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
         alignItems: 'center',
         zIndex: 20
       }}
+      from={{
+        scale: open ? 1 : 0
+      }}
+      animate={{
+        scale: open ? 0 : 1
+      }}
+      transition={{
+        type: 'timing',
+        duration: 300
+      }}
     >
       <Svg width={'200%'} height={'200%'} viewBox="0 0 574 379" fill="none">
         <Ellipse cx={80.5} cy={319} rx={30.5} ry={26} fill={shades[0]} />

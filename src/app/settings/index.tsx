@@ -13,7 +13,7 @@ export default function Settings() {
         style={styles.gradient}
       >
         <Link href="/settings">
-          <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
+          <PrimaryButton onTap={() => {}} variant={{ size: 'large', color: 'yellow' }}>
             this is settings
           </PrimaryButton>
         </Link>

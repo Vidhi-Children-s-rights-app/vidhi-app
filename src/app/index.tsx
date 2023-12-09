@@ -15,7 +15,7 @@ import { Balloons } from '../components/ui/Balloons';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateType>('default');
-  const [pauseBalloon, setPauseBalloon] = useState<boolean>(false);
+  const [pauseBalloon, setPauseBalloon] = useState<boolean>(true);
   const [appIsReady, setAppIsReady] = useState(false);
   useEffect(() => {
     async function prepare() {
@@ -40,10 +40,10 @@ export default function Home() {
     return null;
   }
 
-  const startParllax = () => {
+  const startRouting = () => {
     console.log('Routing...');
     setCloudState('closed');
-    setPauseBalloon(false);
+    setPauseBalloon(true);
     const routing = setTimeout(() => router.push('/menu'), 700);
     return () => {
       clearTimeout(routing);
@@ -64,7 +64,7 @@ export default function Home() {
         <MainBalloon pauseBalloon={pauseBalloon} setPauseBalloon={setPauseBalloon} /><Balloons />
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
-          onTap={startParllax}
+          onTap={startRouting}
         >
           start your journey
         </PrimaryButton>
