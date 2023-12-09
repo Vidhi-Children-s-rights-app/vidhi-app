@@ -44,7 +44,7 @@ export default function Home() {
     console.log('Routing...');
     setCloudState('closed');
     setPauseBalloon(false);
-    const routing = setTimeout(() => router.push('/menu'), 700);
+    const routing = setTimeout(() => router.push('/module/34'), 700);
     return () => {
       clearTimeout(routing);
     };

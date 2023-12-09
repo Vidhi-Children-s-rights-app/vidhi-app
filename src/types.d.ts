@@ -1,14 +1,22 @@
+import { Dispatch, SetStateAction } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+
+export type StateType = 'default' | 'open' | 'closed';
+export type StateDispatcher<T> = Dispatch<SetStateAction<T>>;
+export type JSXStyles = StyleProp<ViewStyle>;
+
 type Nullable<T> = T | null;
 
-interface ModuleProgressState {
+export interface ModuleProgressState {
   currentIndex: number;
-  backgroundSprite: Nullable<string>;
-  speakerSprite: Nullable<string>;
+  backgroundSprite: Nullable<ImageSourcePropType>;
+  characterSprite: Nullable<ImageSourcePropType>;
   mascotSprite: Nullable<string>;
   speakerName: Nullable<string>;
-  speakerDialogue: Nullable<string>;
+  characterDialogue: Nullable<string>;
   mascotDialogue: Nullable<string>;
   summaryUpdate: Nullable<string>;
+  audio: Nullable<string>;
 }
 
 type MascotDialogueType = ChoiceDialogueType;

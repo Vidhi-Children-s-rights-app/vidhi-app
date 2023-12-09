@@ -41,6 +41,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'green'
               }}
+              onTap={() => {}}
             >
               Resume
             </PrimaryButton>
@@ -51,6 +52,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'blue'
               }}
+              onTap={() => {}}
             >
               Restart
             </PrimaryButton>
@@ -61,6 +63,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'orange'
               }}
+              onTap={() => {}}
             >
               Back to Menu
             </PrimaryButton>

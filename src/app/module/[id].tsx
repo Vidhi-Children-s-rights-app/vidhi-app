@@ -5,13 +5,17 @@ import {
   Pressable,
   Modal,
   Alert,
-  StyleSheet
+  StyleSheet,
+  ImageSourcePropType
 } from 'react-native';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ModulePauseModal from '../../components/modules/ModulePauseModal';
 import { script } from '../../modules/scripts/script1';
 import { getNextState, getDelay } from '../../utils/utils.module';
 import { useLocalSearchParams } from 'expo-router';
+import { ModuleState } from '@/types';
+import { MenuHamburger } from '../../components/ui';
+import GameView from '../../components/modules/GameView';
 
 const Module = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -34,74 +38,20 @@ const Module = () => {
   };
 
   return (
-    <View style={{ position: 'relative' }} onTouchEnd={updateModuleState}>
+    <View style={{ position: 'relative' }}>
+      <MenuHamburger
+        onPress={() => setModalVisible(!modalVisible)}
+      ></MenuHamburger>
+
       <ModulePauseModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       ></ModulePauseModal>
 
-      {moduleState.progressState.backgroundSprite && (
-        <Image
-          source={require('../../assets/module/bg.jpeg')}
-          style={{ position: 'absolute' }}
-        />
-      )}
-      <Text
-        style={{
-          color: 'white',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        THIS IS MODULE {id}
-      </Text>
-      <Pressable
-        style={{ width: 60, height: 60, margin: 20 }}
-        onPress={() => setModalVisible(!modalVisible)}
-      >
-        <View
-          style={{
-            width: 60,
-            height: 60,
-            backgroundColor: '#ffffff55',
-            borderRadius: 35,
-            borderWidth: 1,
-            borderColor: '#ffffff',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <View>
-            <View
-              style={{
-                width: 30,
-                height: 3,
-                backgroundColor: '#ffffff',
-                borderRadius: 2.5,
-                margin: 3
-              }}
-            ></View>
-            <View
-              style={{
-                width: 30,
-                height: 3,
-                backgroundColor: '#ffffff',
-                borderRadius: 2.5,
-                margin: 3
-              }}
-            ></View>
-            <View
-              style={{
-                width: 30,
-                height: 3,
-                backgroundColor: '#ffffff',
-                borderRadius: 2.5,
-                margin: 3
-              }}
-            ></View>
-          </View>
-        </View>
-      </Pressable>
+      <GameView
+        updateModuleState={updateModuleState}
+        currentModuleState={moduleState}
+      />
     </View>
   );
 };

@@ -12,7 +12,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const PrimaryButton: React.FC<Props> = ({ variant, onTap, children }) => {
+export const PrimaryButton: React.FC<Props> = ({
+  variant,
+  onTap,
+  children
+}) => {
   return (
     <Pressable
       style={{
