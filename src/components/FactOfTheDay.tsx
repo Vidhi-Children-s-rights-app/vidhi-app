@@ -12,7 +12,7 @@ import { StateDispatcher, StateType } from '../types';
 type Props = {
   description: string;
   cloudState: StateType;
-  setCloudState: StateDispatcher;
+  setCloudState: StateDispatcher<StateType>;
 };
 
 const FactOfTheDay: React.FC<Props> = ({

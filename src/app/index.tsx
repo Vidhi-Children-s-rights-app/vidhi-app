@@ -44,10 +44,10 @@ export default function Home() {
     console.log('Routing...');
     setCloudState('closed');
     setPauseBalloon(true);
-    const routing = setTimeout(() => router.push('/menu'), 700);
+    const routing = setTimeout(() => router.push('/module/34'), 700);
     return () => {
       clearTimeout(routing);
-    }
+    };
   };
 
   return (
@@ -61,7 +61,11 @@ export default function Home() {
           cloudState={cloudState}
           setCloudState={setCloudState}
         />
-        <MainBalloon pauseBalloon={pauseBalloon} setPauseBalloon={setPauseBalloon} /><Balloons />
+        <MainBalloon
+          pauseBalloon={pauseBalloon}
+          setPauseBalloon={setPauseBalloon}
+        />
+        <Balloons />
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}

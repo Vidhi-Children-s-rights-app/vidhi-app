@@ -1,6 +1,6 @@
 import { View, Text, Modal, Pressable, Alert, StyleSheet } from 'react-native';
 import React from 'react';
-import { PrimaryButton } from '../../../components/PrimaryButton';
+import { PrimaryButton } from '../PrimaryButton';
 import Svg, { Path } from 'react-native-svg';
 
 const ModulePauseModal = (props: any) => {
@@ -41,6 +41,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'green'
               }}
+              onTap={() => {}}
             >
               Resume
             </PrimaryButton>
@@ -51,6 +52,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'blue'
               }}
+              onTap={() => {}}
             >
               Restart
             </PrimaryButton>
@@ -61,6 +63,7 @@ const ModulePauseModal = (props: any) => {
                 size: 'large',
                 color: 'orange'
               }}
+              onTap={() => {}}
             >
               Back to Menu
             </PrimaryButton>
