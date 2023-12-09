@@ -1,19 +1,21 @@
+import { Link } from 'expo-router';
 import { MotiView, Text } from 'moti';
 import Svg, { Ellipse } from 'react-native-svg';
 
 const shades = ['#9AB7E1', '#B0CAF1', '#7599D0'];
 
-export const EmergencyMessage = () => {
+export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
   return (
     <MotiView
       style={{
         height: '30%',
         width: '100%',
         position: 'absolute',
-        top: '-40%',
-        left: '100%',
+        top: '10%',
+        left: '140%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 20
       }}
     >
       <Svg width={'200%'} height={'200%'} viewBox="0 0 574 379" fill="none">
@@ -69,7 +71,28 @@ export const EmergencyMessage = () => {
           fill={shades[2]}
         />
       </Svg>
-      <Text style={{ color: 'white', position: 'absolute', fontFamily: '' }}>abcd</Text>
+      <Text
+        style={{
+          color: '#EFEFEF',
+          position: 'absolute',
+          fontFamily: 'regular',
+          left: 15,
+          fontSize: 10
+        }}
+      >
+        The child helpline number is{' '}
+        <Link
+          style={{
+            fontSize: 15,
+            textDecorationLine: 'underline',
+            color: 'white'
+          }}
+          href="tel:$1098"
+        >
+          1098
+        </Link>
+        . Click to see more...
+      </Text>
     </MotiView>
   );
 };
