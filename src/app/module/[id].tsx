@@ -7,25 +7,54 @@ import {
   Alert,
   StyleSheet
 } from 'react-native';
-import { PrimaryButton } from '../../../components/PrimaryButton';
-import React, { useState } from 'react';
-import Svg, { Circle, Path } from 'react-native-svg';
-import ModulePauseModal from '../components/ModulePauseModal';
+import { useEffect, useState } from 'react';
+import ModulePauseModal from '../../components/modules/ModulePauseModal';
+import { script } from '../../modules/scripts/script1';
+import { getNextState, getDelay } from '../../utils/utils.module';
+import { useLocalSearchParams } from 'expo-router';
 
-const Module1 = () => {
+const Module = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [moduleState, setModuleState] = useState('default');
+  const [touchDisabled, setTouchDisabled] = useState(false);
+  const [moduleState, setModuleState] = useState<ModuleState>({
+    progressState: script[0],
+    isCompleted: script.length > 1 ? false : true
+  });
+  const { id } = useLocalSearchParams();
+
+  const updateModuleState = () => {
+    if (touchDisabled) return;
+    if (moduleState.isCompleted) return;
+    setModuleState(getNextState(script, moduleState));
+    setTouchDisabled(true);
+    const timeout = setTimeout(() => {
+      setTouchDisabled(false);
+    }, getDelay(moduleState));
+    return () => clearTimeout(timeout);
+  };
+
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={{ position: 'relative' }} onTouchEnd={updateModuleState}>
       <ModulePauseModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       ></ModulePauseModal>
 
-      <Image
-        source={require('./assets/bg.jpeg')}
-        style={{ position: 'absolute' }}
-      />
+      {moduleState.progressState.backgroundSprite && (
+        <Image
+          source={require('../../assets/module/bg.jpeg')}
+          style={{ position: 'absolute' }}
+        />
+      )}
+      <Text
+        style={{
+          color: 'white',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        THIS IS MODULE {id}
+      </Text>
       <Pressable
         style={{ width: 60, height: 60, margin: 20 }}
         onPress={() => setModalVisible(!modalVisible)}
@@ -77,4 +106,4 @@ const Module1 = () => {
   );
 };
 
-export default Module1;
+export default Module;

@@ -48,7 +48,7 @@ export default function Home() {
           setCloudState={setCloudState}
         />
         <MainBalloon />
-        <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
+        <Link href="/module/54" style={{ position: 'absolute', bottom: '10%' }}>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>

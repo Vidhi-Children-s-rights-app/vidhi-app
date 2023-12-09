@@ -1,6 +1,6 @@
 import { View, Text, Modal, Pressable, Alert, StyleSheet } from 'react-native';
 import React from 'react';
-import { PrimaryButton } from '../../../components/PrimaryButton';
+import { PrimaryButton } from '../PrimaryButton';
 import Svg, { Path } from 'react-native-svg';
 
 const ModulePauseModal = (props: any) => {
