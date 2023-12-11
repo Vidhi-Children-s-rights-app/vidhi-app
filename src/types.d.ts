@@ -16,7 +16,7 @@ export interface ModuleProgressState {
   characterDialogue: Nullable<string>;
   mascotDialogue: Nullable<string>;
   summaryUpdate: Nullable<string>;
-  audio: Nullable<string>;
+  audio: any;
 }
 
 type MascotDialogueType = ChoiceDialogueType;

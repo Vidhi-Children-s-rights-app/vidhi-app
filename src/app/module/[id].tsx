@@ -16,15 +16,50 @@ import { useLocalSearchParams } from 'expo-router';
 import { ModuleState } from '@/types';
 import { MenuHamburger } from '../../components/ui';
 import GameView from '../../components/modules/GameView';
+import { Audio } from 'expo-av';
 
 const Module = () => {
+  const [sound, setSound] = useState<Audio.Sound>();
   const [modalVisible, setModalVisible] = useState(false);
   const [touchDisabled, setTouchDisabled] = useState(false);
   const [moduleState, setModuleState] = useState<ModuleState>({
     progressState: script[0],
     isCompleted: script.length > 1 ? false : true
   });
+
+  useEffect(() => {
+    if (moduleState.progressState.audio) {
+      console.log('Loading Sound');
+      Audio.Sound.createAsync(moduleState.progressState.audio).then((audio) => {
+        setSound(audio.sound);
+        console.log('Loaded Sound succcccesssfully');
+      });
+    } else {
+      setSound(undefined);
+      console.log('Fucck this audio', moduleState.progressState.audio);
+    }
+  }, [moduleState]);
+
+  useEffect(() => {
+    return () => {
+      sound?.unloadAsync();
+    };
+  });
+
+  useEffect(() => {
+    if (sound) {
+      playSound();
+    }
+  }, [sound]);
+
   const { id } = useLocalSearchParams();
+
+  async function playSound() {
+    if (sound) {
+      console.log('Playing Sound');
+      await sound.playAsync();
+    }
+  }
 
   const updateModuleState = () => {
     if (touchDisabled) return;
