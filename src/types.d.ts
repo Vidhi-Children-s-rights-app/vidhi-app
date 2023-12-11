@@ -14,16 +14,18 @@ export interface ModuleProgressState {
   mascotSprite: Nullable<string>;
   speakerName: Nullable<string>;
   characterDialogue: Nullable<string>;
-  mascotDialogue: Nullable<string>;
+  mascotDialogue: Nullable<MascotDialogueType>;
   summaryUpdate: Nullable<string>;
   audio: Nullable<string>;
 }
 
-type MascotDialogueType = ChoiceDialogueType;
+export type ScriptType = Partial<ModuleProgressState>[];
+
+type MascotDialogueType = string | ChoiceDialogueType;
 
 interface ChoiceDialogueType {
   question: string;
-  choices?: ChoiceType[];
+  choices: ChoiceType[];
 }
 
 interface ChoiceType {
