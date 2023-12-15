@@ -1,9 +1,11 @@
 import 'react-native-gesture-handler';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import "../localizations/i18n.config";
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 import { router } from 'expo-router';
+import { useTranslation } from "react-i18next";
 
 import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -12,11 +14,14 @@ import { HomeScreenGradient } from '../constants';
 import type { StateType } from '../types';
 import { loadFonts } from '../assets/fonts';
 import { Balloons } from '../components/ui/Balloons';
+import LanguagePicker from '../utils/translation_picker';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateType>('default');
   const [pauseBalloon, setPauseBalloon] = useState<boolean>(true);
   const [appIsReady, setAppIsReady] = useState(false);
+  const { t } = useTranslation();
+
   useEffect(() => {
     async function prepare() {
       try {
@@ -55,17 +60,16 @@ export default function Home() {
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
         <FactOfTheDay
-          description={
-            'Minimum age for employment of children is 14 years. According to the Child Labour Law, making children less than the age of 14 work is considered a crime.'
-          }
+          description={t('FOTD.1')}
           cloudState={cloudState}
           setCloudState={setCloudState}
-        />
+          />
         <MainBalloon
           pauseBalloon={pauseBalloon}
           setPauseBalloon={setPauseBalloon}
-        />
+          />
         <Balloons />
+        <LanguagePicker/>
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}
