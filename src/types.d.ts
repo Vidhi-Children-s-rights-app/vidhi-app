@@ -1,11 +1,17 @@
 import { Dispatch, SetStateAction } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { ImageSourcePropType, StyleProp, ViewStyle } from 'react-native';
 
 export type StateType = 'default' | 'open' | 'closed';
 export type StateDispatcher<T> = Dispatch<SetStateAction<T>>;
 export type JSXStyles = StyleProp<ViewStyle>;
 
 type Nullable<T> = T | null;
+
+export interface IUser {
+  name: string;
+  email: string;
+  age: number;
+}
 
 export interface ModuleProgressState {
   currentIndex: number;
@@ -38,4 +44,22 @@ interface ModuleState {
   isCompleted: boolean;
 }
 
-type StateDispatcher<T> = React.Dispatch<React.SetStateAction<T>>;
+export type KeyboardVariants = 'email' | 'text' | 'number' | 'phone';
+
+type ResponseType =
+  | {
+      type: 'input';
+      variant: KeyboardVariants;
+    }
+  | {
+      type: 'choice';
+      choices: string[];
+    };
+
+export interface DialogueState {
+  currentIndex: number;
+  mascotSprite?: ImageSourcePropType;
+  mascotDialogue?: string;
+  response?: ResponseType;
+  redirect?: (params?: string | number) => number;
+}
