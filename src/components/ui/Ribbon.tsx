@@ -10,7 +10,7 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
           zIndex: 50,
           top: -10
         }}
-        width={386}
+        width={350}
         height={52}
         viewBox="0 0 758 89"
       >
