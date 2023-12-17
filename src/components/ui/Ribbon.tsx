@@ -8,7 +8,8 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
       <Svg
         style={{
           zIndex: 50,
-          top: -10
+          top: -10,
+          transform: [{ scaleX: 1.1 }, { scaleY: 1.2 }]
         }}
         width="100%"
         height="30%"
@@ -91,7 +92,7 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
           position: 'absolute',
           width: '100%',
           alignItems: 'center',
-          top: -5
+          top: '-4%'
         }}
       >
         <Text
