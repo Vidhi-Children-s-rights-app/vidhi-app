@@ -9,7 +9,23 @@ const _layout = () => {
         headerShown: false,
         tabBarStyle: styles.tabStyle
       }}
-    ></Tabs>
+    >
+      <Tabs.Screen
+        name="quiz"
+        options={{
+          title: 'Quiz',
+          headerShown: false,
+          tabBarItemStyle: { display: 'none' }
+        }}
+      />
+      <Tabs.Screen
+        name="community"
+        options={{
+          title: 'Community',
+          headerShown: false
+        }}
+      />
+    </Tabs>
   );
 };
 

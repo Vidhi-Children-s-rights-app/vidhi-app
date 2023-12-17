@@ -17,8 +17,8 @@ const UserContext = createContext<{
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserProps>(null);
   const updateUser = (newUserDetails: UserProps) => {
+    console.log('newUser', newUserDetails);
     setUser({
-      ...user,
       ...newUserDetails
     });
     console.log('Updated user: ', user);

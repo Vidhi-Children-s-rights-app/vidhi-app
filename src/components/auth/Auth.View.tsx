@@ -9,6 +9,8 @@ import { DialogueState } from '../../types';
 import { hydrateDialogue } from '../../utils/utils.base';
 import { SecondaryButton } from '../SecondaryButton';
 
+import { useUserContext } from '../../context/UserContext';
+
 export default function AuthView({
   dialogueState: { mascotSprite, mascotDialogue, response },
   loadNext
@@ -18,7 +20,11 @@ export default function AuthView({
 }) {
   const [isTyping, setIsTyping] = useState<boolean>(true);
   const parts = hydrateDialogue(mascotDialogue);
-  const dialogue = mascotDialogue?.replace('|', 'Siddharth');
+  const { user, updateUser } = useUserContext();
+  const dialogue = mascotDialogue?.replace(
+    '|',
+    user ? user.name! : 'Sidhharth'
+  );
 
   return (
     <View
