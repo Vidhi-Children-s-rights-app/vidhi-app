@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import RibbonCard from '../../components/ui/RibbonCard';
 import LeaderBoardContent from '../../components/ui/LeaderBoardContent';
 import { NavLayout } from '../../components/layout';
+import JoinSchool from '../../components/ui/JoinSchool';
 
 const Community = () => {
   return (
@@ -16,6 +17,7 @@ const Community = () => {
           alignItems: 'center'
         }}
       >
+        <JoinSchool />
         <View
           style={{
             backgroundColor: '#00000077',

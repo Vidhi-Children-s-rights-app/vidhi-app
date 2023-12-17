@@ -92,7 +92,7 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
           position: 'absolute',
           width: '100%',
           alignItems: 'center',
-          top: '-6%'
+          top: '-4%'
         }}
       >
         <Text
