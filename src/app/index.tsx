@@ -46,10 +46,9 @@ export default function Home() {
   }
 
   const startRouting = () => {
-    console.log('Routing...');
     setCloudState('closed');
     setPauseBalloon(true);
-    setTimeout(() => router.push('/auth'), 700);
+    setTimeout(() => router.push('/community'), 700);
   };
 
   return (
@@ -66,7 +65,7 @@ export default function Home() {
           setPauseBalloon={setPauseBalloon}
         />
         <Balloons />
-        <LanguagePicker />
+        {/* <LanguagePicker /> */}
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}
