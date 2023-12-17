@@ -4,14 +4,15 @@ import Svg, { Path, Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 const Ribbon: React.FC<{ text: string }> = ({ text }) => {
   return (
-    <View style={{ position: 'absolute' }}>
+    <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <Svg
         style={{
           zIndex: 50,
-          top: -10
+          top: -10,
+          transform: [{ scaleX: 1.1 }, { scaleY: 1.2 }]
         }}
-        width={350}
-        height={52}
+        width="100%"
+        height="30%"
         viewBox="0 0 758 89"
       >
         <Path
@@ -91,7 +92,7 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
           position: 'absolute',
           width: '100%',
           alignItems: 'center',
-          top: -5
+          top: '-6%'
         }}
       >
         <Text
