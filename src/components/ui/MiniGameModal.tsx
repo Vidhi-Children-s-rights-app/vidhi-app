@@ -25,7 +25,6 @@ const MiniGameModal: React.FC<{ children: React.ReactElement }> = ({
           }}
         >
           {children}
-          <Text>MiniGameModal</Text>
         </View>
       </View>
     </Modal>
