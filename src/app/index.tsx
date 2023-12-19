@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
-import "../localizations/i18n.config";
+import '../localizations/i18n.config';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 import { router } from 'expo-router';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -46,13 +46,9 @@ export default function Home() {
   }
 
   const startRouting = () => {
-    console.log('Routing...');
     setCloudState('closed');
     setPauseBalloon(true);
-    const routing = setTimeout(() => router.push('/module/1'), 700);
-    return () => {
-      clearTimeout(routing);
-    };
+    setTimeout(() => router.push('/auth'), 700);
   };
 
   return (
@@ -63,19 +59,18 @@ export default function Home() {
           description={t('FOTD.1')}
           cloudState={cloudState}
           setCloudState={setCloudState}
-          />
+        />
         <MainBalloon
           pauseBalloon={pauseBalloon}
           setPauseBalloon={setPauseBalloon}
-          />
+        />
         <Balloons />
-        <LanguagePicker/>
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}
-        >
-          start your journey
+        >{t('buttons.start')}
         </PrimaryButton>
+        <LanguagePicker/>
       </LinearGradient>
     </SafeAreaView>
   );
