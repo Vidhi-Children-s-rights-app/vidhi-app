@@ -46,7 +46,7 @@ export default function Home() {
         <Clouds currentState={cloudState} />
         <FactOfTheDay description={'sau dhai whd aw uio sefy saaatw hayu rg eua sy'} cloudState={cloudState} setCloudState={setCloudState} />
         <MainBalloon />
-        <Link href="/menu" style={{ position: 'absolute', bottom: '10%' }}>
+        <Link href="/auth/Signup" style={{ position: 'absolute', bottom: '10%' }}>
           <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
             start your journey
           </PrimaryButton>

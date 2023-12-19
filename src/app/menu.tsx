@@ -4,10 +4,10 @@ import * as Font from 'expo-font';
 import { useEffect } from 'react';
 
 import { MenuColors, MenuScreenGradient } from '../constants';
-import Home from "../assets/images/home.png";
-import Book from "../assets/images/books.png";
-import Community from "../assets/images/community.png";
-import Quize from "../assets/images/quize.png";
+// import Home from "../assets/images/home.png";
+// import Book from "../assets/images/books.png";
+// import Community from "../assets/images/community.png";
+// import Quize from "../assets/images/quize.png";
 import Profile1 from "../assets/images/profile1.png";
 import Settings from '../assets/images/settings.png';
 
@@ -37,13 +37,6 @@ export default function Menu() {
           <View style={styles.settingContainer}>
             <Image source={Settings} style={styles.settingImg} />
           </View>
-        </View>
-
-        <View style={styles.bottomMenu}>
-          <Image source={Home} style={styles.Image} />
-          <Image source={Book} style={styles.Image} />
-          <Image source={Quize} style={styles.Image} />
-          <Image source={Community} style={styles.Image} />
         </View>
       </LinearGradient>
     </SafeAreaView>
