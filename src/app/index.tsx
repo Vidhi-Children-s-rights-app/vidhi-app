@@ -15,6 +15,7 @@ import type { StateType } from '../types';
 import { loadFonts } from '../assets/fonts';
 import { Balloons } from '../components/ui/Balloons';
 import LanguagePicker from '../utils/translation_picker';
+import { JumbleGame } from '../components/JumbleGame';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateType>('default');
@@ -69,10 +70,11 @@ export default function Home() {
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}
-        >
+          >
           {t('buttons.start')}
         </PrimaryButton>
       </LinearGradient>
+      <JumbleGame/>
       <LanguagePicker />
     </SafeAreaView>
   );
