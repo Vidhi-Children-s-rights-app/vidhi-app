@@ -84,9 +84,9 @@ export const Input: React.FC<{
           []
         )}
         onPress={() => {
-          const value = (textRef.current as unknown as { value: string }).value;
-          console.log(value);
-          updateUser({ name: value.trim() });
+          const value = (textRef.current as unknown as { value: string })
+            .value as string;
+          updateUser({ name: value ? value.trim() : '' });
           setTimeout(() => {
             onTap(value);
             setIsTyping(true);

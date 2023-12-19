@@ -56,7 +56,8 @@ export const script: DialogueState[] = [
       variant: 'text',
       key: 'name'
     },
-    redirect: (params) => ((params as string).trim().length < 3 ? 7 : 8)
+    redirect: (params) =>
+      params && (params as string).trim().length < 3 ? 7 : 8
   },
   {
     currentIndex: 7,
@@ -96,7 +97,8 @@ export const script: DialogueState[] = [
       variant: 'number',
       key: 'phone'
     },
-    redirect: (params) => (Math.log10(params as number) + 1 !== 10 ? 13 : 14)
+    redirect: (params) =>
+      Math.floor(Math.log10(params as number)) + 1 !== 10 ? 13 : 14
   },
   {
     currentIndex: 13,
