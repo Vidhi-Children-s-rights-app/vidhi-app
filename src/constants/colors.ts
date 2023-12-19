@@ -1,4 +1,5 @@
 export const HomeScreenGradient = ['#4DCEFF', '#CDF1FF'];
+export const MenuScreenGradient = ['#E0F65C', '#A9EB55', '#91CF43'];
 export const FOTD = {
   HeaderBackground: '#FFF0CA',
   HeaderShadow: '#D0C197',
@@ -19,3 +20,9 @@ export const AuthModalColors = {
   shadow: '#CCBFA5',
   text: '#BC8C69'
 };
+
+export const MenuColors = {
+  bgColor: "#FFFFFF4a",
+  TopMenuBgColor: "#FFFFFF8a",
+  textColor: "#BA5A80"
+}
