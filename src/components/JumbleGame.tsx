@@ -8,7 +8,7 @@ export const JumbleGame: React.FC = () => {
   const [state, setState] = useState(data);
 
   const setVisited = (r: number, c: number) => {
-    let copy = state;
+    let copy = [...state];
     copy[r][c].visited = true;
     setState(copy);
   };

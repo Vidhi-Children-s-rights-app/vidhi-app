@@ -1,8 +1,15 @@
-import { SafeAreaView, StyleSheet, View, Image, Text } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Image,
+  ImageBackground,
+  Text,
+  Pressable
+} from 'react-native';
 
-import { MenuColors, MenuScreenGradient } from '../../constants';
-import { settings, profile } from '../../assets/images';
+import { MenuColors } from '../../constants';
+import { settings, profile, school, menuBackground } from '../../assets/images';
 import { NavLayout } from '../../components/layout';
 import MiniGameModal from '../../components/ui/MiniGameModal';
 import { JumbleGame } from '../../components/JumbleGame';
@@ -12,7 +19,10 @@ export default function Menu() {
   return (
     <NavLayout currentScreen={1}>
       <SafeAreaView style={styles.container}>
-        <LinearGradient colors={MenuScreenGradient} style={styles.gradient}>
+        <ImageBackground
+          source={require('../../assets/images/menu-background.png')}
+          style={styles.background}
+        >
           <View style={styles.topMenu}>
             <View>
               <Image source={profile} style={{ width: 60, height: 60 }} />
@@ -31,7 +41,22 @@ export default function Menu() {
               <Image source={settings} style={styles.settingImg} />
             </View>
           </View>
-        </LinearGradient>
+          <Pressable
+            style={{
+              height: '20%',
+              aspectRatio: 370 / 328,
+              position: 'absolute',
+              left: '5%',
+              bottom: '35%',
+              backgroundColor: 'red'
+            }}
+          >
+            <Image
+              source={school.active}
+              style={{ width: '100%', height: '100%' }}
+            ></Image>
+          </Pressable>
+        </ImageBackground>
       </SafeAreaView>
     </NavLayout>
   );
@@ -42,9 +67,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  gradient: {
-    flex: 1,
+  background: {
     width: '100%',
+    height: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'relative'
@@ -62,7 +87,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
     borderWidth: 1,
-    borderColor: '#91CF43'
+    borderColor: '#91CF43',
+    zIndex: 10
   },
   settingContainer: {
     position: 'absolute',
@@ -90,16 +116,10 @@ const styles = StyleSheet.create({
     padding: 4,
     backgroundColor: MenuColors.bgColor,
     marginBottom: 20,
-    // opacity: .3,
+    zIndex: 10,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center'
-  },
-  Image: {
-    width: 90,
-    height: 70,
-    objectFit: 'contain'
-    // opacity: 1
   }
 });

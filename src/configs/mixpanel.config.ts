@@ -1,10 +1,10 @@
-import { Mixpanel } from 'mixpanel-react-native';
+// import { Mixpanel } from 'mixpanel-react-native';
 
-const apiKey = process.env.MIXPANEL_API_KEY as string;
-const trackAutomaticEvents = true;
-const trackPageView = true;
+// const apiKey = process.env.MIXPANEL_API_KEY as string;
+// const trackAutomaticEvents = true;
+// const trackPageView = true;
 
-const mixpanel = new Mixpanel(apiKey, trackAutomaticEvents);
-mixpanel.init(trackPageView);
+// const mixpanel = new Mixpanel(apiKey, trackAutomaticEvents);
+// mixpanel.init();
 
-export default mixpanel;
+// export default mixpanel;
