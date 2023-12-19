@@ -18,7 +18,7 @@ export const script: Partial<ModuleProgressState>[] = [
     currentIndex: 1,
     backgroundSprite: sprites['bg'],
     characterSprite: sprites['mascot'],
-    mascotDialogue: 'fuck you ur sus af2..fuck',
+    mascotDialogue: 'Hello',
     audio: sounds['bgm']
   },
   {

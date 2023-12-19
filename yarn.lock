@@ -9466,6 +9466,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mixpanel-react-native@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "mixpanel-react-native@npm:2.4.0"
+  checksum: 9976e3d03d0fcad0d30da1dcef261c01d91adaa689c936c45f3ad881f5bcfae1f2916482128f980fd073cdc71bb6b1f632792971673f63173d565c1329ea7e30
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:^0.5.1, mkdirp@npm:~0.5.1":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
@@ -13065,6 +13072,7 @@ __metadata:
     hey-listen: ^1.0.8
     i18next: ^23.7.8
     intl-pluralrules: ^2.0.1
+    mixpanel-react-native: ^2.4.0
     moti: ^0.27.2
     react: 18.2.0
     react-dom: 18.2.0

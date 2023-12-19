@@ -100,6 +100,7 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
             color: 'white'
           }}
           href="tel:$1098"
+          onPress={() => console.log('hi')}
         >
           1098
         </Link>
