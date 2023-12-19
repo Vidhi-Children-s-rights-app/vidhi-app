@@ -10,6 +10,7 @@ import {
   StateDispatcher
 } from '../../types';
 import { useUserContext } from '../../context/UserContext';
+import { useTranslation } from 'react-i18next';
 
 export const Input: React.FC<{
   variant: KeyboardVariantProps;
@@ -17,6 +18,7 @@ export const Input: React.FC<{
   setIsTyping: StateDispatcher<boolean>;
 }> = ({ variant, onTap, setIsTyping }) => {
   const textRef = useRef<TextInput>(null);
+  const { t } = useTranslation();
   const { updateUser } = useUserContext();
 
   return (
@@ -62,7 +64,7 @@ export const Input: React.FC<{
           }}
           keyboardType={KeyboardVariants[variant]}
           cursorColor={COLORS['text']}
-          placeholder="your name..."
+          placeholder={t("login_ques.name_input")}
           placeholderTextColor={COLORS['shadow']}
         />
       </MotiView>

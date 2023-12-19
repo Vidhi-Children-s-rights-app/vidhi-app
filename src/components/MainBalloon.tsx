@@ -39,10 +39,10 @@ export const MainBalloon: React.FC<Props> = ({
     <animated.View
       style={{
         height: '30%',
-        width: '30%',
+        width: '33%',
         position: 'absolute',
         top: '50%',
-        left: '10%',
+        left: '8%',
         zIndex: 25,
         transform: [{ translateX }, { translateY }, { scale }]
       }}
