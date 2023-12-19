@@ -7,6 +7,7 @@ import {
 } from '../../types';
 import TypeWriter from 'react-native-typewriter';
 import MiniGameModal from '../ui/MiniGameModal';
+import Maze from '../ui/Maze';
 
 const GameView: React.FC<{
   updateModuleState: () => void;
@@ -38,7 +39,7 @@ const GameView: React.FC<{
       onTouchEnd={updateModuleState}
     >
       <MiniGameModal>
-        <Text>Hey</Text>
+        <Maze />
       </MiniGameModal>
       <Background source={backgroundSprite as ImageSourcePropType} />
       <CharacterSprite source={characterSprite as ImageSourcePropType} />

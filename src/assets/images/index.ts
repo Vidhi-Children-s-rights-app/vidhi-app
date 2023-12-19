@@ -9,3 +9,5 @@ export const icons = {
 
 export const settings = require('./settings.png');
 export const profile = require('./profile1.png');
+export const pathSprite = require('./pathsprite.png');
+export const hedge = require('./hedge.png');
