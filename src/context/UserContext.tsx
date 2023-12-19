@@ -5,7 +5,7 @@ import { i18n } from 'i18next';
 
 type UserProps = Nullable<Partial<IUser>>;
 type UserDispatcherProps = (user: UserProps) => void;
-type LanguageDispatcherProps = (language: string) => void;
+type LanguageDispatcherProps = (newLanguage: string) => void;
 
 const UserContext = createContext<{
   user: UserProps;
@@ -14,11 +14,13 @@ const UserContext = createContext<{
   updateLanguage: LanguageDispatcherProps;
 }>({
   user: null,
-  language: languages.english,
+  language: 'en',
   updateUser: () => {
     console.log('User undefined');
   },
-  updateLanguage: () => {}
+  updateLanguage: () => {
+    console.log('default lang');
+  }
 });
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -32,12 +34,14 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     console.log('Updated user: ', user);
   };
-  const updateLanguage = (language: string) => {
-    console.log(language)
-    setLanguage(language)
-  }
+  const updateLanguage = (newLanguage: string) => {
+    console.log('from updatelang', newLanguage);
+    setLanguage(newLanguage);
+  };
   return (
-    <UserContext.Provider value={{ user, language, updateUser, updateLanguage }}>
+    <UserContext.Provider
+      value={{ user, language, updateUser, updateLanguage }}
+    >
       {children}
     </UserContext.Provider>
   );

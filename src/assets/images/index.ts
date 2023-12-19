@@ -5,7 +5,8 @@ export const icons = {
   menu: require('./module-icon.png'),
   archives: require('./archives-logo.png'),
   quiz: require('./quiz-icon.png'),
-  community: require('./community.png')
+  community: require('./community.png'),
+  earth: require('./earth.png')
 };
 
 export const settings = require('./settings.png');
