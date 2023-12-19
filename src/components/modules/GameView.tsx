@@ -36,8 +36,8 @@ const GameView: React.FC<{
       }}
       onTouchEnd={updateModuleState}
     >
-      <Background source={backgroundSprite} />
-      <CharacterSprite source={characterSprite} />
+      <Background source={backgroundSprite as ImageSourcePropType} />
+      <CharacterSprite source={characterSprite as ImageSourcePropType} />
       {mascotDialogue && (
         <MascotDialogue
           content={mascotDialogue}

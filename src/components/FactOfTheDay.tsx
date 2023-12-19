@@ -31,8 +31,8 @@ const FactOfTheDay: React.FC<Props> = ({
     <View style={styles.wrapper}>
       <MotiView
         style={styles.headerBody}
-        from={{ scale: 0.5 }}
-        animate={{ scale: 1 }}
+        from={{ scale: 0, translateY: -20 }}
+        animate={{ scale: 1, translateY: 0 }}
         onTouchEnd={handler}
       >
         <Text style={styles.headerText}>{t('did_you_know')}</Text>

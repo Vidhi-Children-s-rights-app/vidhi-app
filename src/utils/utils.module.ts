@@ -1,4 +1,4 @@
-import { ModuleProgressState, ModuleState } from "@/types";
+import { ModuleProgressState, ModuleState } from "../types";
 
 export const getNextState = (
   script: Partial<ModuleProgressState>[],

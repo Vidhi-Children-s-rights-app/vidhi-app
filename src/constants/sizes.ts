@@ -1,10 +1,15 @@
-import { StateType, JSXStyles } from "../types";
+import { StateType, JSXStyles } from '../types';
 
 export const ButtonSizeVariants = {
   large: {
     width: 240,
     height: 80,
     fontSize: 20
+  },
+  small: {
+    width: 100,
+    height: 33.33333,
+    fontSize: 12
   }
 };
 
@@ -41,9 +46,7 @@ export const DetailPannel: Record<
   }
 };
 
-export const BalloonPositions = [
-
-]
+export const BalloonPositions = [];
 
 export const INITIAL_STATE = {
   translateX: -2,
