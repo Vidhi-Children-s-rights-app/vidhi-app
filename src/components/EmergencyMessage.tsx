@@ -89,13 +89,13 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
           position: 'absolute',
           fontFamily: 'regular',
           left: 15,
-          fontSize: 10
+          fontSize: 14
         }}
       >
         {t('balloon.message')}
         <Link
           style={{
-            fontSize: 15,
+            fontSize: 14,
             textDecorationLine: 'underline',
             color: 'white'
           }}

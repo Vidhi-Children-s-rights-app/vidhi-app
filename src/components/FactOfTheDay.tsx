@@ -71,13 +71,14 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontFamily: 'heading',
-    fontSize: 35,
+    fontSize: 28,
     paddingHorizontal: '5%',
-    color: FOTD.TextColor
+    color: FOTD.TextColor,
+    fontWeight:'bold'
   },
   infoBody: {
     width: '80%',
-    height: '10%',
+    // height: '15%',
     backgroundColor: FOTD.HeaderBackground,
     borderColor: FOTD.HeaderShadow,
     borderBottomWidth: 2,

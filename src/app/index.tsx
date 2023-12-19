@@ -14,6 +14,7 @@ import { HomeScreenGradient } from '../constants';
 import type { StateType } from '../types';
 import { loadFonts } from '../assets/fonts';
 import { Balloons } from '../components/ui/Balloons';
+import LanguagePicker from '../utils/translation_picker';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateType>('default');

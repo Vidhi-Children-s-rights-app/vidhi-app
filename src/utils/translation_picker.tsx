@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, View, Text, Pressable, StyleSheet, Image } from "react-native";
 import earth from "../assets/images/earth.png";
+import { MotiView } from "moti";
+import { ButtonColorVariants, FOTD } from "../constants";
 
 
 const LanguagePicker = () => {
@@ -21,7 +23,7 @@ const LanguagePicker = () => {
         setModalVisible(!modalVisible);
       }}
     >
-      <Text >{label}</Text>
+      <Text style={styles.text}>{label}</Text>
     </Pressable>
   );
 
@@ -33,13 +35,13 @@ const LanguagePicker = () => {
          onRequestClose={() => {
         setModalVisible(!modalVisible);
         }} */}
-          {modalVisible && <View
+          {modalVisible && <MotiView
         style={styles.modal}
           >
             {languages.map((lang) => (
               <LanguageItem {...lang} key={lang.name} />
             ))}
-          </View>}
+          </MotiView>}
       <Pressable 
         onPress={() => setModalVisible(!modalVisible)}>
         <Image style={styles.earth} source={earth}/>
@@ -50,7 +52,6 @@ const LanguagePicker = () => {
 
 const styles=StyleSheet.create({
   earth:{
-    //  backgroundColor:'red',
     width:50,
     height:50,
     
@@ -61,13 +62,41 @@ const styles=StyleSheet.create({
     bottom:0,
     display:'flex',
     alignItems:'flex-end',
-    padding:10
+    padding:10,
   },
   modal:{
-    width:100,
-    height:100,
-    backgroundColor:'red'
+    width:120,
+    borderRadius:10,
+    padding:6,
+    backgroundColor: FOTD.HeaderBackground,
+    borderBottomWidth: 3,
+    borderLeftWidth: 2,
+    borderColor:FOTD.HeaderShadow
+  },
+  text:{
+    fontSize:18,
+    fontWeight:'bold',
+      color: ButtonColorVariants.wood.text,
+      padding: 6,
+      margin:3,
+      borderRadius:15,
+      backgroundColor: ButtonColorVariants.wood.background,
+      textAlign:'center'
   }
 });
 
 export default LanguagePicker;
+
+// selectlanguage: {
+//   width: 200,
+//   backgroundColor: "#F5E9C9",
+//   minHeight: 100,
+//   borderRadius: 8,
+//   paddingTop: 6,
+//  paddingHorizontal:6,
+// },
+// textStyle: {
+//   fontSize: 18,
+//   fontWeight: "500",
+//   marginBottom: 6,
+//   border
