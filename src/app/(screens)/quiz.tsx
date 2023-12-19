@@ -3,7 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RibbonCard from '../../components/ui/RibbonCard';
 import QuizCardContent from '../../components/ui/QuizCardContent';
-import LeaderBoardContent from '../../components/ui/LeaderBoardContent';
+import LeaderBoardCardContent from '../../components/ui/LeaderBoardCardContent';
 import { NavLayout } from '../../components/layout';
 
 const Quiz = () => {
@@ -33,7 +33,7 @@ const Quiz = () => {
             <QuizCardContent remTime="69:42:00" remainingQ={3} />
           </RibbonCard>
           <RibbonCard bgColor={'#4F46E5'} ribbonText="LeaderBoard">
-            <LeaderBoardContent entries={['HEllo1', 'Hello2', 'Hello3']} />
+            <LeaderBoardCardContent entries={['HEllo1', 'Hello2', 'Hello3']} />
           </RibbonCard>
         </View>
       </SafeAreaView>

@@ -94,7 +94,7 @@ export const script: DialogueState[] = [
     mascotDialogue: 'And how should I contact you? (Enter your number)',
     response: {
       type: 'input',
-      variant: 'number',
+      variant: 'phone',
       key: 'phone'
     },
     redirect: (params) =>
@@ -111,7 +111,7 @@ export const script: DialogueState[] = [
       'Last step... Give me a password (Something that you can remember easily)',
     response: {
       type: 'input',
-      variant: 'number',
+      variant: 'text',
       key: 'password'
     }
   },

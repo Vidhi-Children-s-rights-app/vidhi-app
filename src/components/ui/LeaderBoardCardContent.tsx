@@ -5,7 +5,10 @@ interface Props {
   entries: string[];
   rank?: string;
 }
-const LeaderBoardContent: React.FC<Props> = ({ entries, rank = '- - - -' }) => {
+const LeaderBoardCardContent: React.FC<Props> = ({
+  entries,
+  rank = '- - - -'
+}) => {
   return (
     <View style={{ width: '100%', height: '100%' }}>
       <Image
@@ -146,4 +149,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LeaderBoardContent;
+export default LeaderBoardCardContent;
