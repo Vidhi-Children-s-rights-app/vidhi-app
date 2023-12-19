@@ -14,7 +14,7 @@ export default function AuthPage() {
     const nextState = getNextState({ dialogueState, params });
     setDialogueState(nextState);
     if (nextState.currentIndex === 0) {
-      router.replace('/(tabs)/menu');
+      router.replace('/(screens)/menu');
     }
   };
   return (

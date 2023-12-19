@@ -17,7 +17,7 @@ export const Input: React.FC<{
   setIsTyping: StateDispatcher<boolean>;
 }> = ({ variant, onTap, setIsTyping }) => {
   const textRef = useRef<TextInput>(null);
-  const { user, updateUser } = useUserContext();
+  const { updateUser } = useUserContext();
 
   return (
     <View
@@ -83,13 +83,10 @@ export const Input: React.FC<{
             },
           []
         )}
-        // transition={{
-        //   delay: 1000
-        // }}
         onPress={() => {
           const value = (textRef.current as unknown as { value: string }).value;
           console.log(value);
-          updateUser({ name: value });
+          updateUser({ name: value.trim() });
           setTimeout(() => {
             onTap(value);
             setIsTyping(true);
