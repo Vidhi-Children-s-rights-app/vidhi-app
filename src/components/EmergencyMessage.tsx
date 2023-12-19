@@ -2,6 +2,7 @@ import { Link } from 'expo-router';
 import { MotiView, Text } from 'moti';
 import { useTranslation } from 'react-i18next';
 import Svg, { Ellipse } from 'react-native-svg';
+import mixpanel from '../configs/mixpanel.config';
 
 const shades = ['#9AB7E1', '#B0CAF1', '#7599D0'];
 
@@ -100,7 +101,10 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
             color: 'white'
           }}
           href="tel:$1098"
-          onPress={() => console.log('hi')}
+          onPress={() => {
+            mixpanel.track('Emergency Call');
+            console.log('tracked');
+          }}
         >
           1098
         </Link>
