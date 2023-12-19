@@ -6,6 +6,7 @@ import {
   StateDispatcher
 } from '../../types';
 import TypeWriter from 'react-native-typewriter';
+import MiniGameModal from '../ui/MiniGameModal';
 
 const GameView: React.FC<{
   updateModuleState: () => void;
@@ -36,6 +37,9 @@ const GameView: React.FC<{
       }}
       onTouchEnd={updateModuleState}
     >
+      <MiniGameModal>
+        <Text>Hey</Text>
+      </MiniGameModal>
       <Background source={backgroundSprite as ImageSourcePropType} />
       <CharacterSprite source={characterSprite as ImageSourcePropType} />
       {mascotDialogue && (
