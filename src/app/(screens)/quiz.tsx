@@ -8,7 +8,7 @@ import { NavLayout } from '../../components/layout';
 
 const Quiz = () => {
   return (
-    <NavLayout currentScreen={2}>
+    <NavLayout currentScreen={3}>
       <SafeAreaView
         style={{
           backgroundColor: '#3730A3',

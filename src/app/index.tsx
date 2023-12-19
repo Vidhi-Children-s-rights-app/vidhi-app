@@ -48,7 +48,7 @@ export default function Home() {
   const startRouting = () => {
     setCloudState('closed');
     setPauseBalloon(true);
-    setTimeout(() => router.push('/community'), 700);
+    setTimeout(() => router.push('/auth'), 700);
   };
 
   return (
