@@ -1,26 +1,31 @@
-import { SafeAreaView, StyleSheet } from 'react-native';
+import 'react-native-gesture-handler';
+import '../localizations/i18n.config';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 import { Clouds, MainBalloon } from '../components/ui';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { HomeScreenGradient } from '../constants';
 import FactOfTheDay from '../components/FactOfTheDay';
-import type { CloudStateType } from "../types";
+import { HomeScreenGradient } from '../constants';
+import type { StateType } from '../types';
+import { loadFonts } from '../assets/fonts';
+import { Balloons } from '../components/ui/Balloons';
+import LanguagePicker from '../utils/translation_picker';
 
 export default function Home() {
-  const [cloudState, setCloudState] = useState<CloudStateType>('default');
+  const [cloudState, setCloudState] = useState<StateType>('default');
+  const [pauseBalloon, setPauseBalloon] = useState<boolean>(true);
   const [appIsReady, setAppIsReady] = useState(false);
+  const { t } = useTranslation();
+
   useEffect(() => {
     async function prepare() {
       try {
-        await Font.loadAsync({
-          'MontserratAlternates-Bold': require('../assets/fonts/MontserratAlternates-Bold.ttf'),
-          'JockeyOne-Regular': require('../assets/fonts/JockeyOne-Regular.ttf')
-        });
+        await loadFonts();
       } catch (e) {
         console.warn(e);
       } finally {
@@ -40,17 +45,33 @@ export default function Home() {
     return null;
   }
 
+  const startRouting = () => {
+    setCloudState('closed');
+    setPauseBalloon(true);
+    setTimeout(() => router.push('/auth'), 700);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
         <Clouds currentState={cloudState} />
-        <FactOfTheDay description={'sau dhai whd aw uio sefy saaatw hayu rg eua sy'} cloudState={cloudState} setCloudState={setCloudState} />
-        <MainBalloon />
-        <Link href="/auth/Signup" style={{ position: 'absolute', bottom: '10%' }}>
-          <PrimaryButton variant={{ size: 'large', color: 'yellow' }}>
-            start your journey
-          </PrimaryButton>
-        </Link>
+        <FactOfTheDay
+          description={t('FOTD.1')}
+          cloudState={cloudState}
+          setCloudState={setCloudState}
+        />
+        <MainBalloon
+          pauseBalloon={pauseBalloon}
+          setPauseBalloon={setPauseBalloon}
+        />
+        <Balloons />
+        {/* <LanguagePicker /> */}
+        <PrimaryButton
+          variant={{ size: 'large', color: 'yellow' }}
+          onTap={startRouting}
+        >
+          start your journey
+        </PrimaryButton>
       </LinearGradient>
     </SafeAreaView>
   );

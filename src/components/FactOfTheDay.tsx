@@ -1,19 +1,18 @@
 import {
   Text,
   StyleSheet,
-  ImageBackground,
-  View,
-  Pressable
+  Image,
+  View
 } from 'react-native';
 import { MotiView } from 'moti';
-import { FOTD, detailPannel } from '../constants';
+import { FOTD, DetailPannel } from '../constants';
 import { mascot_1 } from '../assets/images';
-import { CloudStateDispatcher, CloudStateType } from '../types';
+import { StateDispatcher, StateType } from '../types';
 
 type Props = {
   description: string;
-  cloudState: CloudStateType;
-  setCloudState: CloudStateDispatcher;
+  cloudState: StateType;
+  setCloudState: StateDispatcher<StateType>;
 };
 
 const FactOfTheDay: React.FC<Props> = ({
@@ -30,24 +29,19 @@ const FactOfTheDay: React.FC<Props> = ({
     <View style={styles.wrapper}>
       <MotiView
         style={styles.headerBody}
-        from={{ scale: 0.5 }}
-        animate={{ scale: 1 }}
+        from={{ scale: 0, translateY: -20 }}
+        animate={{ scale: 1, translateY: 0 }}
+        onTouchEnd={handler}
       >
         <Text style={styles.headerText}>Did you know?</Text>
-
-        <ImageBackground source={mascot_1} style={styles.image}>
-          <Pressable
-            style={{ height: '100%', width: '100%' }}
-            onPress={handler}
-          />
-        </ImageBackground>
+        <Image source={mascot_1} style={styles.image} />
       </MotiView>
       <MotiView
         style={styles.infoBody}
-        from={detailPannel[cloudState].from}
-        animate={detailPannel[cloudState].to}
+        from={DetailPannel[cloudState].from as any}
+        animate={DetailPannel[cloudState].to as any}
       >
-        <Text style={styles.infoText}>{ description }</Text>
+        <Text style={styles.infoText}>{description}</Text>
       </MotiView>
     </View>
   );
@@ -74,7 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headerText: {
-    fontFamily: 'JockeyOne-Regular',
+    fontFamily: 'heading',
     fontSize: 35,
     paddingHorizontal: '5%',
     color: FOTD.TextColor
@@ -87,10 +81,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderLeftWidth: 2,
     borderRadius: 20,
+    zIndex: 15,
     margin: 30
   },
   infoText: {
-    fontFamily: 'MontserratAlternates-Bold',
+    fontFamily: 'regular',
     fontSize: 15,
     padding: '5%',
     color: 'orange'
