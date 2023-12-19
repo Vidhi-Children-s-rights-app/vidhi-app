@@ -23,7 +23,7 @@ export default function AuthView({
   const parts = hydrateDialogue(mascotDialogue);
   const { user, updateUser } = useUserContext();
   const { t } = useTranslation();
-  const dialogue = mascotDialogue?.replace(
+  const dialogue = (typeof mascotDialogue ==='string'? t(mascotDialogue) : mascotDialogue)?.replace(
     '|',
     user ? user.name! : 'Sidhharth'
   );
@@ -74,7 +74,7 @@ export default function AuthView({
           position: 'absolute'
         }}
       >
-        {typeof dialogue === 'string'? t(dialogue):dialogue}
+        {dialogue}
       </TypeWritter>
       {!isTyping &&
         response?.type === 'choice' &&

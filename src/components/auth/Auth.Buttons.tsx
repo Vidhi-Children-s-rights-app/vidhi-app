@@ -8,7 +8,7 @@ export const Buttons: React.FC<{
   onTap: (params: any) => any;
   setIsTyping: StateDispatcher<boolean>;
 }> = ({ buttons, onTap, setIsTyping }) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <View
       style={{
@@ -36,8 +36,8 @@ export const Buttons: React.FC<{
               setIsTyping(true);
             }, 500);
           }}
-        >hh
-          {/* {t(text)} */}
+        >
+          {t(text)}
         </PrimaryButton>
       ))}
     </View>
