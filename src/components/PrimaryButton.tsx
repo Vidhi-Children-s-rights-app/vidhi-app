@@ -21,7 +21,8 @@ export const PrimaryButton: React.FC<Props> = ({
   children
 }) => {
   return (
-    <MotiPressable
+    <MotiPressable onAccessibilityAction={(e)=>{console.log('Done');
+    }}
       style={{
         width: ButtonSizeVariants[size].width,
         height: ButtonSizeVariants[size].height,
