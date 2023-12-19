@@ -9,8 +9,9 @@ type Nullable<T> = T | null;
 
 export interface IUser {
   name: string;
-  email: string;
   age: number;
+  phone: string;
+  password: string;
 }
 
 export interface ModuleProgressState {
@@ -50,6 +51,7 @@ type ResponseType =
   | {
       type: 'input';
       variant: KeyboardVariants;
+      key: keyof IUser;
     }
   | {
       type: 'choice';
