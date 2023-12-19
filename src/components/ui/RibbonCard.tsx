@@ -16,7 +16,8 @@ const RibbonCard: React.FC<{
         width: '90%',
         height: '25%',
         position: 'relative',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: '10%'
       }}
     >
       <Ribbon text={ribbonText} />

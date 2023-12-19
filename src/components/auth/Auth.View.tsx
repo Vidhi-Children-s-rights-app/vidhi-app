@@ -57,7 +57,7 @@ export default function AuthView({
         />
       )}
       <TypeWritter
-        minDelay={5}
+        maxDelay={10}
         typing={1}
         // @ts-ignore
         // delayMap={[{ at: /[.!?]/, delay: 200 }]}
