@@ -69,10 +69,11 @@ export default function Home() {
         <PrimaryButton
           variant={{ size: 'large', color: 'yellow' }}
           onTap={startRouting}
-        >{t('buttons.start')}
+        >
+          {t('buttons.start')}
         </PrimaryButton>
       </LinearGradient>
-        <LanguagePicker/>
+      <LanguagePicker />
     </SafeAreaView>
   );
 }

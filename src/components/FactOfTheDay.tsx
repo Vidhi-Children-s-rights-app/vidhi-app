@@ -79,7 +79,6 @@ let styles = StyleSheet.create({
     borderLeftWidth: 2,
     justifyContent: 'center'
   },
-  headerText: {},
   infoBody: {
     width: '80%',
     // height: '15%',

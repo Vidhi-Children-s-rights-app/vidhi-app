@@ -1,5 +1,6 @@
 import { View, Text, Modal } from 'react-native';
 import React from 'react';
+import Maze from './Maze';
 
 const MiniGameModal: React.FC<{ children: React.ReactElement }> = ({
   children
