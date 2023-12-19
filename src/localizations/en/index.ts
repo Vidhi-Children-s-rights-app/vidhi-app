@@ -22,7 +22,7 @@ export default {
 		new_user:'Are you new here?',
 		name:'Hello friend... I am Urja! Who are you?',
 		name_input:'your name...',
-		name_ask:'Can you quickly tell me your email address?',
+		name_ask:'Can you quickly tell me your phone number?',
 		nice_to_meet_you:'Nice to meet you | , I can already tell that we will be the bestest friends.',
 		confirm_name:'Are you | ?',
 		welcome:'So good to see you back',
