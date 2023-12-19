@@ -4,6 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MenuColors, MenuScreenGradient } from '../../constants';
 import { settings, profile } from '../../assets/images';
 import { NavLayout } from '../../components/layout';
+import MiniGameModal from '../../components/ui/MiniGameModal';
+import { JumbleGame } from '../../components/JumbleGame';
+import Maze from '../../components/ui/Maze';
 
 export default function Menu() {
   return (
