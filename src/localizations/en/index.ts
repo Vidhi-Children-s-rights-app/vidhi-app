@@ -26,6 +26,15 @@ export default {
 		nice_to_meet_you:'Nice to meet you | , I can already tell that we will be the bestest friends.',
 		confirm_name:'Are you | ?',
 		welcome:'So good to see you back',
-		double_check:'Oops! Looks like we need to double check the details'
+		double_check:'Oops! Looks like we need to double check the details',
+		full_name:'Is this really your name? Try entering your full name',
+		age:'And how old are you?',
+		patience_text:'A little more patience young explorer! We just need a few more details...',
+		more_details:'Just 2 more details... Sit tight!',
+		num_ask_nicely:'And how should I contact you? (Enter your number)',
+		num_ask_rudely:'Enter a valid number',
+		last_step:'Last step... Give me a password (Something that you can remember easily)',
+		go:'And we are good to go!',
+		pass_ask:'And your password?',
 	}
 };

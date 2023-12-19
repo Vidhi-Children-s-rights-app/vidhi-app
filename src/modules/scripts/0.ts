@@ -61,7 +61,7 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 7,
-    mascotDialogue: 'Is this really your name? Try entering your full name',
+    mascotDialogue: 'login_ques.full_name',
     redirect: () => 6
   },
   {
@@ -70,7 +70,7 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 9,
-    mascotDialogue: 'And how old are you?',
+    mascotDialogue: 'login_ques.age',
     response: {
       type: 'input',
       variant: 'number',
@@ -81,16 +81,16 @@ export const script: DialogueState[] = [
   {
     currentIndex: 10,
     mascotDialogue:
-      'A little more patience young explorer! We just need a few more details...',
+      'login_ques.patience_text',
     redirect: () => 12
   },
   {
     currentIndex: 11,
-    mascotDialogue: 'Just 2 more details... Sit tight!'
+    mascotDialogue: 'login_ques.more_details'
   },
   {
     currentIndex: 12,
-    mascotDialogue: 'And how should I contact you? (Enter your number)',
+    mascotDialogue: 'login_ques.num_ask_nicely',
     response: {
       type: 'input',
       variant: 'phone',
@@ -101,13 +101,13 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 13,
-    mascotDialogue: 'Enter a valid number',
+    mascotDialogue: 'login_ques.num_ask_rudely',
     redirect: () => 12
   },
   {
     currentIndex: 14,
     mascotDialogue:
-      'Last step... Give me a password (Something that you can remember easily)',
+      'login_ques.last_step',
     response: {
       type: 'input',
       variant: 'text',
@@ -116,12 +116,12 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 15,
-    mascotDialogue: 'And we are good to go!',
+    mascotDialogue: 'login_ques.go',
     redirect: () => 0
   },
   {
     currentIndex: 16,
-    mascotDialogue: 'And your password?',
+    mascotDialogue: 'login_ques.pass_ask',
     response: {
       type: 'input',
       variant: 'number',
