@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, View, Text, Pressable, StyleSheet } from "react-native";
+import { Modal, View, Text, Pressable, StyleSheet, Image } from "react-native";
+import earth from "../assets/images/earth.png";
+
 
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,29 +26,48 @@ const LanguagePicker = () => {
   );
 
   return (
-    <View>
-      <Modal
-        animationType="slide"
+    <View style={styles.wrapper}>
+        {/* animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View >
-          <View >
+         onRequestClose={() => {
+        setModalVisible(!modalVisible);
+        }} */}
+          {modalVisible && <View
+        style={styles.modal}
+          >
             {languages.map((lang) => (
               <LanguageItem {...lang} key={lang.name} />
             ))}
-          </View>
-        </View>
-      </Modal>
+          </View>}
       <Pressable 
-        onPress={() => setModalVisible(true)}>
-        <Text >{i18n.language}</Text>
+        onPress={() => setModalVisible(!modalVisible)}>
+        <Image style={styles.earth} source={earth}/>
       </Pressable>
     </View>
   );
 };
+
+const styles=StyleSheet.create({
+  earth:{
+    //  backgroundColor:'red',
+    width:50,
+    height:50,
+    
+  },
+  wrapper:{
+    width:'100%',
+    position:'absolute',
+    bottom:0,
+    display:'flex',
+    alignItems:'flex-end',
+    padding:10
+  },
+  modal:{
+    width:100,
+    height:100,
+    backgroundColor:'red'
+  }
+});
 
 export default LanguagePicker;

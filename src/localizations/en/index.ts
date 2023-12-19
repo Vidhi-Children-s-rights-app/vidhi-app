@@ -3,6 +3,8 @@ export default {
 	password: 'Password',
 	login: 'Login',
 	welcome: 'Welcome',
+	YES:'YES',
+	NO:'NO',
 	change_language: 'Change Language',
 	did_you_know: 'Did you know?',
 	balloon:{
@@ -21,7 +23,9 @@ export default {
 		name:'Hello friend... I am Urja! Who are you?',
 		name_input:'your name...',
 		name_ask:'Can you quickly tell me your email address?',
-		nice_to_meet_you:'Nice to meet you ',
-		best_friends:' I can already tell that we will be bestest friends.',
+		nice_to_meet_you:'Nice to meet you |, I can already tell that we will be the bestest friends.',
+		confirm_name:'Are you | ?',
+		welcome:'So good to see you back',
+		double_check:'Oops! Looks like we need to double check the details'
 	}
 };

@@ -1,12 +1,14 @@
 import { View } from 'react-native';
 import { PrimaryButton } from '../PrimaryButton';
 import { StateDispatcher } from '../../types';
+import { useTranslation } from 'react-i18next';
 
 export const Buttons: React.FC<{
   buttons: string[];
   onTap: (params: any) => any;
   setIsTyping: StateDispatcher<boolean>;
 }> = ({ buttons, onTap, setIsTyping }) => {
+  // const { t } = useTranslation();
   return (
     <View
       style={{
@@ -34,8 +36,8 @@ export const Buttons: React.FC<{
               setIsTyping(true);
             }, 500);
           }}
-        >
-          {text}
+        >hh
+          {/* {t(text)} */}
         </PrimaryButton>
       ))}
     </View>

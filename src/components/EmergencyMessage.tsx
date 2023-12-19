@@ -1,10 +1,12 @@
 import { Link } from 'expo-router';
 import { MotiView, Text } from 'moti';
+import { useTranslation } from 'react-i18next';
 import Svg, { Ellipse } from 'react-native-svg';
 
 const shades = ['#9AB7E1', '#B0CAF1', '#7599D0'];
 
 export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
+  const { t } = useTranslation();
   return (
     <MotiView
       style={{
@@ -90,7 +92,7 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
           fontSize: 10
         }}
       >
-        The child helpline number is{' '}
+        {t('balloon.message')}
         <Link
           style={{
             fontSize: 15,
@@ -101,7 +103,7 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
         >
           1098
         </Link>
-        . Click to see more...
+        . {t('balloon.see_more')}
       </Text>
     </MotiView>
   );

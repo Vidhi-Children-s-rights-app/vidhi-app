@@ -10,6 +10,7 @@ import { hydrateDialogue } from '../../utils/utils.base';
 import { SecondaryButton } from '../SecondaryButton';
 
 import { useUserContext } from '../../context/UserContext';
+import { useTranslation } from 'react-i18next';
 
 export default function AuthView({
   dialogueState: { mascotSprite, mascotDialogue, response },
@@ -21,6 +22,7 @@ export default function AuthView({
   const [isTyping, setIsTyping] = useState<boolean>(true);
   const parts = hydrateDialogue(mascotDialogue);
   const { user, updateUser } = useUserContext();
+  const { t } = useTranslation();
   const dialogue = mascotDialogue?.replace(
     '|',
     user ? user.name! : 'Sidhharth'
@@ -72,7 +74,7 @@ export default function AuthView({
           position: 'absolute'
         }}
       >
-        {dialogue}
+        {typeof dialogue === 'string'? t(dialogue):dialogue}
       </TypeWritter>
       {!isTyping &&
         response?.type === 'choice' &&

@@ -70,8 +70,8 @@ export default function Home() {
           onTap={startRouting}
         >{t('buttons.start')}
         </PrimaryButton>
-        <LanguagePicker/>
       </LinearGradient>
+        <LanguagePicker/>
     </SafeAreaView>
   );
 }

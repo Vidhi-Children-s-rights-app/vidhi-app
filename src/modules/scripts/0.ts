@@ -12,7 +12,7 @@ export const script: DialogueState[] = [
   {
     currentIndex: 1,
     mascotSprite: mascot_1,
-    mascotDialogue: 'Are you new here?',
+    mascotDialogue: 'login_ques.new_user',
     response: {
       type: 'choice',
       choices: ['YES', 'NO']
@@ -21,7 +21,7 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 2,
-    mascotDialogue: 'Can you quickly tell me your email address?',
+    mascotDialogue: 'login_ques.name_ask',
     response: {
       type: 'input',
       variant: 'email'
@@ -29,7 +29,7 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 3,
-    mascotDialogue: 'Are you | ?',
+    mascotDialogue: 'login_ques.confirm_name',
     response: {
       type: 'choice',
       choices: ['YES', 'NO']
@@ -38,17 +38,17 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 4,
-    mascotDialogue: 'So good to see you back!',
+    mascotDialogue: 'login_ques.welcome',
     redirect: () => 0
   },
   {
     currentIndex: 5,
-    mascotDialogue: 'Oops! Looks like we need to double check the details',
+    mascotDialogue: 'login_ques.double_check',
     redirect: () => 2
   },
   {
     currentIndex: 6,
-    mascotDialogue: 'Hello friend... I am Urja! who are you?',
+    mascotDialogue: 'login_ques.name',
     response: {
       type: 'input',
       variant: 'text'
@@ -57,7 +57,7 @@ export const script: DialogueState[] = [
   {
     currentIndex: 7,
     mascotDialogue:
-      'Nice to meet you |, I can already tell that we will be the bestest friends.',
+      'login_ques.nice_to_meet_you',
     redirect: () => 0
   }
 ];
