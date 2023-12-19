@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, View, Text, Pressable, StyleSheet } from "react-native";
+import { Modal, View, Text, Pressable, StyleSheet, Image } from "react-native";
+import earth from "../assets/images/earth.png";
+import { MotiView } from "moti";
+import { ButtonColorVariants, FOTD } from "../constants";
+
 
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -19,34 +23,80 @@ const LanguagePicker = () => {
         setModalVisible(!modalVisible);
       }}
     >
-      <Text >{label}</Text>
+      <Text style={styles.text}>{label}</Text>
     </Pressable>
   );
 
   return (
-    <View>
-      <Modal
-        animationType="slide"
+    <View style={styles.wrapper}>
+        {/* animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View >
-          <View >
+         onRequestClose={() => {
+        setModalVisible(!modalVisible);
+        }} */}
+          {modalVisible && <MotiView
+        style={styles.modal}
+          >
             {languages.map((lang) => (
               <LanguageItem {...lang} key={lang.name} />
             ))}
-          </View>
-        </View>
-      </Modal>
+          </MotiView>}
       <Pressable 
-        onPress={() => setModalVisible(true)}>
-        <Text >{i18n.language}</Text>
+        onPress={() => setModalVisible(!modalVisible)}>
+        <Image style={styles.earth} source={earth}/>
       </Pressable>
     </View>
   );
 };
 
+const styles=StyleSheet.create({
+  earth:{
+    width:50,
+    height:50,
+    
+  },
+  wrapper:{
+    width:'100%',
+    position:'absolute',
+    bottom:0,
+    display:'flex',
+    alignItems:'flex-end',
+    padding:10,
+  },
+  modal:{
+    width:120,
+    borderRadius:10,
+    padding:6,
+    backgroundColor: FOTD.HeaderBackground,
+    borderBottomWidth: 3,
+    borderLeftWidth: 2,
+    borderColor:FOTD.HeaderShadow
+  },
+  text:{
+    fontSize:18,
+    fontWeight:'bold',
+      color: ButtonColorVariants.wood.text,
+      padding: 6,
+      margin:3,
+      borderRadius:15,
+      backgroundColor: ButtonColorVariants.wood.background,
+      textAlign:'center'
+  }
+});
+
 export default LanguagePicker;
+
+// selectlanguage: {
+//   width: 200,
+//   backgroundColor: "#F5E9C9",
+//   minHeight: 100,
+//   borderRadius: 8,
+//   paddingTop: 6,
+//  paddingHorizontal:6,
+// },
+// textStyle: {
+//   fontSize: 18,
+//   fontWeight: "500",
+//   marginBottom: 6,
+//   border

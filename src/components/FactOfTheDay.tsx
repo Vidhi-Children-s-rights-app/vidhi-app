@@ -8,6 +8,7 @@ import { MotiView } from 'moti';
 import { FOTD, DetailPannel } from '../constants';
 import { mascot_1 } from '../assets/images';
 import { StateDispatcher, StateType } from '../types';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   description: string;
@@ -20,6 +21,7 @@ const FactOfTheDay: React.FC<Props> = ({
   cloudState,
   setCloudState
 }) => {
+  const { t } = useTranslation();
   const handler = () => {
     if (cloudState === 'open') setCloudState('closed');
     else setCloudState('open');
@@ -33,7 +35,7 @@ const FactOfTheDay: React.FC<Props> = ({
         animate={{ scale: 1, translateY: 0 }}
         onTouchEnd={handler}
       >
-        <Text style={styles.headerText}>Did you know?</Text>
+        <Text style={styles.headerText}>{t('did_you_know')}</Text>
         <Image source={mascot_1} style={styles.image} />
       </MotiView>
       <MotiView
@@ -69,13 +71,14 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontFamily: 'heading',
-    fontSize: 35,
+    fontSize: 28,
     paddingHorizontal: '5%',
-    color: FOTD.TextColor
+    color: FOTD.TextColor,
+    fontWeight:'bold'
   },
   infoBody: {
     width: '80%',
-    height: '10%',
+    // height: '15%',
     backgroundColor: FOTD.HeaderBackground,
     borderColor: FOTD.HeaderShadow,
     borderBottomWidth: 2,
