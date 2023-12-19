@@ -6,3 +6,6 @@ export const icons = {
   archives: require('./archives-logo.png'),
   quiz: require('./quiz-icon.png')
 };
+
+export const settings = require('./settings.png');
+export const profile = require('./profile1.png');
