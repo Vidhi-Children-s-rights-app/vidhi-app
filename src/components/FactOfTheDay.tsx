@@ -1,14 +1,12 @@
-import {
-  Text,
-  StyleSheet,
-  Image,
-  View
-} from 'react-native';
+import { Text, StyleSheet, Image, View } from 'react-native';
 import { MotiView } from 'moti';
 import { FOTD, DetailPannel } from '../constants';
 import { mascot_1 } from '../assets/images';
 import { StateDispatcher, StateType } from '../types';
 import { useTranslation } from 'react-i18next';
+import i18n from '../localizations/i18n.config';
+import { useUserContext } from '../context/UserContext';
+import languages from '../localizations/languages';
 
 type Props = {
   description: string;
@@ -27,6 +25,8 @@ const FactOfTheDay: React.FC<Props> = ({
     else setCloudState('open');
   };
 
+  const { language } = useUserContext();
+  
   return (
     <View style={styles.wrapper}>
       <MotiView
@@ -35,7 +35,17 @@ const FactOfTheDay: React.FC<Props> = ({
         animate={{ scale: 1, translateY: 0 }}
         onTouchEnd={handler}
       >
-        <Text style={styles.headerText}>{t('did_you_know')}</Text>
+        <Text
+          style={{
+            fontFamily: 'heading',
+            fontSize: language !== 'tm' ? 29 : 20,
+            paddingHorizontal: '5%',
+            color: FOTD.TextColor,
+            fontWeight: 'bold'
+          }}
+        >
+          {t('did_you_know')}
+        </Text>
         <Image source={mascot_1} style={styles.image} />
       </MotiView>
       <MotiView
@@ -49,7 +59,7 @@ const FactOfTheDay: React.FC<Props> = ({
   );
 };
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
   wrapper: {
     height: '100%',
     width: '100%',
@@ -69,13 +79,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     justifyContent: 'center'
   },
-  headerText: {
-    fontFamily: 'heading',
-    fontSize: 28,
-    paddingHorizontal: '5%',
-    color: FOTD.TextColor,
-    fontWeight:'bold'
-  },
+  headerText: {},
   infoBody: {
     width: '80%',
     // height: '15%',

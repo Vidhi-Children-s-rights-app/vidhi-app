@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, View, Text, Pressable, StyleSheet, Image } from "react-native";
 import earth from "../assets/images/earth.png";
 import { MotiView } from "moti";
 import { ButtonColorVariants, FOTD } from "../constants";
+import language from "../localizations/languages";
+import { useUserContext } from '../context/UserContext';
+
+
 
 
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const { i18n } = useTranslation(); //i18n instance
 
+  const {updateLanguage}  = useUserContext();
+
   //array with all supported languages
   const languages = [
-    { name: "hi", label: "Hindi" },
-    { name: "en", label: "English" },
+    { name: "hi", label: language.hindi },
+    { name: "tm", label: language.tamil },
+    { name: "en", label: language.english },
   ];
 
   const LanguageItem = ({ name, label }: { name: string; label: string }) => (
     <Pressable
       onPress={() => {
-        i18n.changeLanguage(name); //changes the app language
+        i18n.changeLanguage(name);
+        updateLanguage(name); //changes the app language
         setModalVisible(!modalVisible);
       }}
     >

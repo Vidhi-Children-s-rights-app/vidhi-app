@@ -49,7 +49,7 @@ export default function Home() {
     setCloudState('closed');
     setPauseBalloon(true);
     console.log('routing');
-    setTimeout(() => router.push('/module/1'), 700);
+    setTimeout(() => router.push('/auth'), 700);
   };
 
   return (
