@@ -1,5 +1,6 @@
 export const HomeScreenGradient = ['#4DCEFF', '#CDF1FF'];
 export const MenuScreenGradient = ['#E0F65C', '#A9EB55', '#91CF43'];
+export const QuizeScreenGradient = ['#3730A3', '#4F46E5'];
 export const FOTD = {
   HeaderBackground: '#FFF0CA',
   HeaderShadow: '#D0C197',
