@@ -1,6 +1,9 @@
 name: update
 on: push
 
+permissions:
+  contents: write
+
 jobs:
   update:
     name: Production Build
@@ -10,6 +13,13 @@ jobs:
         run: |
           if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
             echo "EXPO_TOKEN is missing from secrets"
+            exit 1
+          fi
+
+      - name: Check for GITHUB_TOKEN
+        run: |
+          if [ -z "${{ secrets.GITHUB_TOKEN }}" ]; then
+            echo "GITHUB_TOKEN is missing from secrets"
             exit 1
           fi
 
