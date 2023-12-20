@@ -10,6 +10,7 @@ import { hydrateDialogue } from '../../utils/utils.base';
 import { SecondaryButton } from '../SecondaryButton';
 
 import { useUserContext } from '../../context/UserContext';
+import { useTranslation } from 'react-i18next';
 
 export default function AuthView({
   dialogueState: { mascotSprite, mascotDialogue, response },
@@ -19,12 +20,9 @@ export default function AuthView({
   loadNext: () => void;
 }) {
   const [isTyping, setIsTyping] = useState<boolean>(true);
-  const parts = hydrateDialogue(mascotDialogue);
-  const { user, updateUser } = useUserContext();
-  const dialogue = mascotDialogue?.replace(
-    '|',
-    user ? user.name! : 'Sidhharth'
-  );
+  const { user } = useUserContext();
+  const { t } = useTranslation();
+  const dialogue = hydrateDialogue(t(mascotDialogue as string), user?.name);
 
   return (
     <View
@@ -55,7 +53,7 @@ export default function AuthView({
         />
       )}
       <TypeWritter
-        minDelay={5}
+        maxDelay={10}
         typing={1}
         // @ts-ignore
         // delayMap={[{ at: /[.!?]/, delay: 200 }]}
@@ -85,7 +83,7 @@ export default function AuthView({
         )}
       {!isTyping && response?.type === 'input' && (
         <Input
-          variant={response.variant}
+          field={response.key}
           onTap={loadNext}
           setIsTyping={setIsTyping}
         />

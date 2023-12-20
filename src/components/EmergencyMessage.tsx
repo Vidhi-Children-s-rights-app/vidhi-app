@@ -1,10 +1,23 @@
 import { Link } from 'expo-router';
 import { MotiView, Text } from 'moti';
+import { useTranslation } from 'react-i18next';
 import Svg, { Ellipse } from 'react-native-svg';
+// import mixpanel from '../configs/mixpanel.config';
+// import * as Location from 'expo-location';
+import { useState } from 'react';
+import mixpanel from '../configs/mixpanel.config';
 
 const shades = ['#9AB7E1', '#B0CAF1', '#7599D0'];
 
 export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
+  const { t } = useTranslation();
+  // const [location, setLocation] = useState<Location.LocationObject>();
+  // const getLocation = async () => {
+  //   const { status } = await Location.requestForegroundPermissionsAsync();
+  //   if (status !== 'granted') return;
+  //   const currentLocation = await Location.getCurrentPositionAsync({});
+  //   setLocation(currentLocation);
+  // };
   return (
     <MotiView
       style={{
@@ -90,18 +103,28 @@ export const EmergencyMessage: React.FC<{ open: boolean }> = ({ open }) => {
           fontSize: 10
         }}
       >
-        The child helpline number is{' '}
+        {t('balloon.message')}
         <Link
           style={{
-            fontSize: 15,
+            fontSize: 14,
             textDecorationLine: 'underline',
             color: 'white'
           }}
           href="tel:$1098"
+          onPress={() => {
+            // mixpanel.track('emergency_button_clicked');
+            // getLocation()
+            //   .then(() => {
+            //     console.log('Your current location: ', location);
+            //   })
+            //   .finally(() => console.log('Hello'));
+            mixpanel.track('Emergency Call');
+            console.log('tracked');
+          }}
         >
           1098
         </Link>
-        . Click to see more...
+        . {t('balloon.see_more')}
       </Text>
     </MotiView>
   );

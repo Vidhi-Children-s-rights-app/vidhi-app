@@ -6,16 +6,17 @@ import AuthView from '../../components/auth/Auth.View';
 import { getNextState } from '../../utils/utils.auth';
 import { firstFrame } from '../../modules/scripts/0';
 import { DialogueState } from '../../types';
-import { UserProvider } from '../../context/UserContext';
+import { UserProvider, useUserContext } from '../../context/UserContext';
 
 export default function AuthPage() {
   const [dialogueState, setDialogueState] = useState<DialogueState>(firstFrame);
+  const { user } = useUserContext();
   const updateDialogState = (params?: string | number) => {
     const nextState = getNextState({ dialogueState, params });
-    setDialogueState(nextState);
     if (nextState.currentIndex === 0) {
-      router.replace('/(tabs)/menu');
-    }
+      console.log('current user is: ', user);
+      router.replace('/quiz');
+    } else setDialogueState(nextState);
   };
   return (
     <UserProvider>

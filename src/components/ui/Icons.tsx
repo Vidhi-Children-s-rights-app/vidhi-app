@@ -74,10 +74,11 @@ export const QuizIcon: React.FC = () => (
 export const CommunityIcon: React.FC = () => (
   <Icon route="/community">
     <Image
-      source={icons.menu}
+      source={icons.community}
       style={{
         height: '100%',
-        width: '100%'
+        width: '100%',
+        transform: [{ scale: 1.2 }]
       }}
     />
   </Icon>

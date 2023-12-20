@@ -1,9 +1,9 @@
 import { KeyboardType } from 'react-native';
-import { type KeyboardVariants as Variants } from '../types';
+import { IUser } from '../types';
 
-export const KeyboardVariants: Record<Variants, KeyboardType> = {
-  email: 'email-address',
+export const KeyboardVariants: Record<keyof IUser, KeyboardType> = {
+  password: 'default',
   phone: 'phone-pad',
-  number: 'number-pad',
-  text: 'default'
+  age: 'number-pad',
+  name: 'default'
 };

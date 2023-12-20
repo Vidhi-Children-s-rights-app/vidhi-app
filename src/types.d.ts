@@ -9,8 +9,9 @@ type Nullable<T> = T | null;
 
 export interface IUser {
   name: string;
-  email: string;
   age: number;
+  phone: number;
+  password: string;
 }
 
 export interface ModuleProgressState {
@@ -44,12 +45,10 @@ interface ModuleState {
   isCompleted: boolean;
 }
 
-export type KeyboardVariants = 'email' | 'text' | 'number' | 'phone';
-
 type ResponseType =
   | {
       type: 'input';
-      variant: KeyboardVariants;
+      key: keyof IUser;
     }
   | {
       type: 'choice';
@@ -64,10 +63,7 @@ export interface DialogueState {
   redirect?: (params?: string | number) => number;
 }
 
-import { Dispatch, SetStateAction } from "react";
-
-export type CloudStateType = 'default' | 'open' | 'closed';
-export type CloudStateDispatcher = Dispatch<SetStateAction<CloudStateType>>;
+import { Dispatch, SetStateAction } from 'react';
 
 export interface logInType {
   email: string;
@@ -79,10 +75,10 @@ export interface SignUpType extends logInType {
 }
 export interface UserType extends SignUpType {
   _id: string;
-  completedModules: [],
-  preferredLanguage: string,
+  completedModules: [];
+  preferredLanguage: string;
   coins: number;
   achivements: [];
-  phone?: string,
-  sex?: string,
+  phone?: string;
+  sex?: string;
 }

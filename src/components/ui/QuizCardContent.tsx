@@ -1,13 +1,17 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
 
 const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
   remTime = '00:00:00',
   remainingQ = 6
 }) => {
+  const router = useRouter();
+  const { t } = useTranslation();
   return (
-    <View
+    <TouchableOpacity
       style={{
         width: '100%',
         height: '100%',
@@ -15,6 +19,7 @@ const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
         alignItems: 'center',
         justifyContent: 'center'
       }}
+      onPress={() => router.push('/quizQuestions')}
     >
       <Svg width={60} height={104} viewBox="0 0 140 104">
         <Path
@@ -57,8 +62,10 @@ const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
           bottom: '10%'
         }}
       >
-        Next question in
+        {t('next_ques.pre')}
         <Text style={{ color: '#FFFFFF' }}> {remTime}</Text>
+        {t('next_ques.post')}
+
       </Text>
       <Text
         style={{
@@ -82,9 +89,9 @@ const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
           bottom: '31%'
         }}
       >
-        remaining
+        {t('remaining')}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

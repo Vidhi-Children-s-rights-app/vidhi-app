@@ -12,7 +12,7 @@ export const script: DialogueState[] = [
   {
     currentIndex: 1,
     mascotSprite: mascot_1,
-    mascotDialogue: 'Are you new here?',
+    mascotDialogue: 'login_ques.new_user',
     response: {
       type: 'choice',
       choices: ['YES', 'NO']
@@ -21,15 +21,16 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 2,
-    mascotDialogue: 'Can you quickly tell me your email address?',
+    mascotDialogue: 'login_ques.name_ask',
     response: {
       type: 'input',
-      variant: 'email'
-    }
+      key: 'phone'
+    },
+    redirect: () => 16
   },
   {
     currentIndex: 3,
-    mascotDialogue: 'Are you | ?',
+    mascotDialogue: 'login_ques.confirm_name',
     response: {
       type: 'choice',
       choices: ['YES', 'NO']
@@ -38,27 +39,87 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 4,
-    mascotDialogue: 'So good to see you back!',
+    mascotDialogue: 'login_ques.welcome',
     redirect: () => 0
   },
   {
     currentIndex: 5,
-    mascotDialogue: 'Oops! Looks like we need to double check the details',
+    mascotDialogue: 'login_ques.double_check',
     redirect: () => 2
   },
   {
     currentIndex: 6,
-    mascotDialogue: 'Hello friend... I am Urja! who are you?',
+    mascotDialogue: 'login_ques.name',
     response: {
       type: 'input',
-      variant: 'text'
-    }
+      key: 'name'
+    },
+    redirect: (params) =>
+      params && (params as string).trim().length < 3 ? 7 : 8
   },
   {
     currentIndex: 7,
-    mascotDialogue:
-      'Nice to meet you |, I can already tell that we will be the bestest friends.',
+    mascotDialogue: 'login_ques.full_name',
+    redirect: () => 6
+  },
+  {
+    currentIndex: 8,
+    mascotDialogue: 'login_ques.nice_to_meet_you'
+  },
+  {
+    currentIndex: 9,
+    mascotDialogue: 'login_ques.age',
+    response: {
+      type: 'input',
+      key: 'age'
+    },
+    redirect: (params) => ((params as number) < 18 ? 10 : 11)
+  },
+  {
+    currentIndex: 10,
+    mascotDialogue: 'login_ques.patience_text',
+    redirect: () => 12
+  },
+  {
+    currentIndex: 11,
+    mascotDialogue: 'login_ques.more_details'
+  },
+  {
+    currentIndex: 12,
+    mascotDialogue: 'login_ques.num_ask_nicely',
+    response: {
+      type: 'input',
+      key: 'phone'
+    },
+    redirect: (params) =>
+      Math.floor(Math.log10(params as number)) + 1 !== 10 ? 13 : 14
+  },
+  {
+    currentIndex: 13,
+    mascotDialogue: 'login_ques.num_ask_rudely',
+    redirect: () => 12
+  },
+  {
+    currentIndex: 14,
+    mascotDialogue: 'login_ques.last_step',
+    response: {
+      type: 'input',
+      key: 'password'
+    }
+  },
+  {
+    currentIndex: 15,
+    mascotDialogue: 'login_ques.go',
     redirect: () => 0
+  },
+  {
+    currentIndex: 16,
+    mascotDialogue: 'login_ques.pass_ask',
+    response: {
+      type: 'input',
+      key: 'password'
+    },
+    redirect: () => 3
   }
 ];
 
