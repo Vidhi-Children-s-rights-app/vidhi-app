@@ -120,30 +120,6 @@ export const JumbleGame: React.FC = () => {
         >
           Enter
         </PrimaryButton>
-        <Pressable
-          onTouchStart={reset}
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 30,
-            backgroundColor: FOTD.HeaderBackground,
-            borderBottomWidth: 3,
-            borderLeftWidth: 2,
-            borderColor: FOTD.HeaderShadow,
-            position: 'relative',
-            bottom: 22,
-            marginLeft: 10,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <Text
-            style={{ fontWeight: 'bold', fontSize: 25, textAlign: 'center' }}
-          >
-            X
-          </Text>
-        </Pressable>
       </View>
     </View>
   );

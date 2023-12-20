@@ -39,10 +39,9 @@ const GameView: React.FC<{
       }}
       onTouchEnd={updateModuleState}
     >
-      <MiniGameModal>
-        {/* <Maze /> */}
+      {/* <MiniGameModal>
         <JumbleGame />
-      </MiniGameModal>
+      </MiniGameModal> */}
       <Background source={backgroundSprite as ImageSourcePropType} />
       <CharacterSprite source={characterSprite as ImageSourcePropType} />
       {mascotDialogue && (
