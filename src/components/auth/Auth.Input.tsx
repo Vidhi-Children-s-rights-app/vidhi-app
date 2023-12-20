@@ -91,7 +91,7 @@ export const Input: React.FC<{
           if (field === 'password') {
             console.log('Tracking user details...');
             mixpanel.identify((getUser() as IUser).phone.toString());
-            mixpanel.track('user_created', getUser());
+            mixpanel.track('user_created', { user_data: getUser() });
           }
           setTimeout(() => {
             onTap(input);
