@@ -29,10 +29,10 @@ const Quiz = () => {
             alignItems: 'center'
           }}
         >
-          <RibbonCard bgColor={'#4F46E5'} ribbonText="Daily Quiz">
+          <RibbonCard bgColor={'#4F46E5'} ribbonText="d_quiz">
             <QuizCardContent remTime="69:42:00" remainingQ={3} />
           </RibbonCard>
-          <RibbonCard bgColor={'#4F46E5'} ribbonText="LeaderBoard">
+          <RibbonCard bgColor={'#4F46E5'} ribbonText="Leaderboard">
             <LeaderBoardCardContent entries={['HEllo1', 'Hello2', 'Hello3']} />
           </RibbonCard>
         </View>

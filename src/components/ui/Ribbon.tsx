@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text } from 'react-native';
 import Svg, { Path, Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 const Ribbon: React.FC<{ text: string }> = ({ text }) => {
+  const {t}=useTranslation();
   return (
     <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <Svg
@@ -103,7 +105,7 @@ const Ribbon: React.FC<{ text: string }> = ({ text }) => {
             fontSize: 20
           }}
         >
-          {text}
+          {t(text)}
         </Text>
       </View>
     </View>

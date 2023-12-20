@@ -38,5 +38,14 @@ export default {
       'Last step... Give me a password (Something that you can remember)',
     go: 'And we are good to go!',
     pass_ask: 'And your password?'
+  },
+  remaining:'remaining',
+  Leaderboard:'Leaderboard',
+  d_quiz:'Daily Quiz',
+  Event:'Event',
+  join_school:'Join your school',
+  next_ques:{
+    pre:'Next question in ',
+    post:''
   }
 };
