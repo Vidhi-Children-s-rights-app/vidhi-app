@@ -12,24 +12,22 @@ type UserDispatcherProps = (key: keyof IUser, value: string | number) => void;
 type LanguageDispatcherProps = (newLanguage: string) => void;
 
 const UserContext = createContext<{
-  user: UserProps;
+  getUser: () => UserProps;
   language: string;
   updateUser: UserDispatcherProps;
   updateLanguage: LanguageDispatcherProps;
 }>({
-  user: undefined,
+  getUser: () => undefined,
   language: 'en',
-  updateUser: () => {
-    console.log('User undefined');
-  },
-  updateLanguage: () => {
-    console.log('default lang');
-  }
+  updateUser: () => {},
+  updateLanguage: () => {}
 });
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserProps>();
   const [language, setLanguage] = useState<string>('en');
+
+  const getUser = (): UserProps => user;
   const updateUser = (key: keyof IUser, value: string | number) => {
     let updatedUserDetails;
     if (key === 'name')
@@ -53,7 +51,6 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
         value as string
       );
     setUser({ ...user, ...updatedUserDetails });
-    console.log('Updated user: ', user);
   };
   const updateLanguage = (newLanguage: string) => {
     console.log('from updatelang', newLanguage);
@@ -61,7 +58,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
   return (
     <UserContext.Provider
-      value={{ user, language, updateUser, updateLanguage }}
+      value={{ getUser, language, updateUser, updateLanguage }}
     >
       {children}
     </UserContext.Provider>

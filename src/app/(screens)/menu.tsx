@@ -51,7 +51,7 @@ export default function Menu() {
             }}
           >
             <Image
-              source={school.disabled}
+              source={school.active}
               style={{ width: '100%', height: '100%' }}
             ></Image>
           </Pressable>
