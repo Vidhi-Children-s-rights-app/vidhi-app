@@ -88,13 +88,13 @@ export const Input: React.FC<{
           []
         )}
         onPress={() => {
-          const textInput = (
-            textRef.current as unknown as { input: string | number }
-          ).input;
-          updateUser(field, textInput ?? '');
-          console.log(textInput);
+          const input = (
+            textRef.current as unknown as { value: string | number }
+          ).value;
+          updateUser(field, input ?? '');
+          console.log(input);
           setTimeout(() => {
-            onTap(textInput);
+            onTap(input);
             setIsTyping(true);
           }, 500);
         }}
