@@ -6,6 +6,7 @@ import { MotiPressable } from 'moti/interactions';
 import { AuthModalColors as COLORS, KeyboardVariants } from '../../constants';
 import ChatIcon from '../ui/ChatIcon';
 import {
+  IUser,
   KeyboardVariants as KeyboardVariantProps,
   StateDispatcher
 } from '../../types';
@@ -13,10 +14,11 @@ import { useUserContext } from '../../context/UserContext';
 import { useTranslation } from 'react-i18next';
 
 export const Input: React.FC<{
+  field: keyof IUser;
   variant: KeyboardVariantProps;
   onTap: (params: any) => any;
   setIsTyping: StateDispatcher<boolean>;
-}> = ({ variant, onTap, setIsTyping }) => {
+}> = ({ field, variant, onTap, setIsTyping }) => {
   const textRef = useRef<TextInput>(null);
   const { t } = useTranslation();
   const { updateUser } = useUserContext();
@@ -64,7 +66,7 @@ export const Input: React.FC<{
           }}
           keyboardType={KeyboardVariants[variant]}
           cursorColor={COLORS['text']}
-          placeholder={t("login_ques.name_input")}
+          placeholder={t('login_ques.name_input')}
           placeholderTextColor={COLORS['shadow']}
         />
       </MotiView>
@@ -86,11 +88,13 @@ export const Input: React.FC<{
           []
         )}
         onPress={() => {
-          const value = (textRef.current as unknown as { value: string })
-            .value as string;
-          updateUser({ name: value ? value.trim() : '' });
+          const textInput = (
+            textRef.current as unknown as { input: string | number }
+          ).input;
+          updateUser(field, textInput ?? '');
+          console.log(textInput);
           setTimeout(() => {
-            onTap(value);
+            onTap(textInput);
             setIsTyping(true);
           }, 500);
         }}

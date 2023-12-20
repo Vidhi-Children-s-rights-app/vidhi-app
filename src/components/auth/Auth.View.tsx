@@ -20,13 +20,9 @@ export default function AuthView({
   loadNext: () => void;
 }) {
   const [isTyping, setIsTyping] = useState<boolean>(true);
-  const parts = hydrateDialogue(mascotDialogue);
-  const { user, updateUser } = useUserContext();
+  const { user } = useUserContext();
   const { t } = useTranslation();
-  const dialogue = (typeof mascotDialogue ==='string'? t(mascotDialogue) : mascotDialogue)?.replace(
-    '|',
-    user ? user.name! : 'Sidhharth'
-  );
+  const dialogue = hydrateDialogue(t(mascotDialogue as string), user?.name);
 
   return (
     <View
@@ -87,6 +83,7 @@ export default function AuthView({
         )}
       {!isTyping && response?.type === 'input' && (
         <Input
+          field={response.key}
           variant={response.variant}
           onTap={loadNext}
           setIsTyping={setIsTyping}

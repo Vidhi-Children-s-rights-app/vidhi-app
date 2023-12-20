@@ -1,16 +1,42 @@
 import { View, Text, Pressable } from 'react-native';
-import { JumbledArrayElements as data } from '../constants/data/jumble';
-import { AuthModalColors as COLORS } from '../constants';
+import JumbledArrayElements from '../constants/data/jumble';
+import { AuthModalColors as COLORS, FOTD } from '../constants';
 import { PrimaryButton } from './PrimaryButton';
 import { useState } from 'react';
 
 export const JumbleGame: React.FC = () => {
-  const [state, setState] = useState(data);
-
+  const [state, setState] = useState(JumbledArrayElements());
+  const [lastMove, setLastMove] = useState<{ i: number; j: number }>({
+    i: -2,
+    j: -2
+  });
+  const [firstMove, setFirstMove] = useState(true);
+  const [myString, setMyString] = useState('');
+  const possible = (i: number, j: number) => {
+    if (
+      Math.abs(i - lastMove.i) <= 1 &&
+      Math.abs(j - lastMove.j) <= 1 &&
+      !(Math.abs(i - lastMove.i) === 1 && Math.abs(j - lastMove.j) === 1)
+    ) {
+      return true;
+    }
+    return false;
+  };
+  const reset = () => {
+    setMyString('');
+    setFirstMove(true);
+    setLastMove({ i: -2, j: -2 });
+    setState(JumbledArrayElements());
+  };
   const setVisited = (r: number, c: number) => {
-    let copy = [...state];
-    copy[r][c].visited = true;
-    setState(copy);
+    if ((possible(r, c) || firstMove) && !state[r][c].visited) {
+      let copy = [...state];
+      copy[r][c].visited = true;
+      setLastMove({ i: r, j: c });
+      setFirstMove(false);
+      setState(copy);
+      setMyString(myString + copy[r][c].char);
+    }
   };
 
   return (
@@ -58,7 +84,6 @@ export const JumbleGame: React.FC = () => {
                     }}
                     onTouchStart={() => {
                       setVisited(rowIndex, cellIndex);
-                      console.log('Press', state[rowIndex][cellIndex]);
                     }}
                   >
                     <Text
@@ -78,14 +103,48 @@ export const JumbleGame: React.FC = () => {
           );
         })}
       </View>
-      <PrimaryButton
-        variant={{ size: 'large', color: 'orange' }}
-        onTap={() => {
-          setState(data);
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
       >
-        Enter
-      </PrimaryButton>
+        <PrimaryButton
+          variant={{ size: 'large', color: 'orange' }}
+          onTap={() => {
+            console.log(myString);
+            reset();
+          }}
+        >
+          Enter
+        </PrimaryButton>
+        <Pressable
+          onTouchStart={reset}
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: 30,
+            backgroundColor: FOTD.HeaderBackground,
+            borderBottomWidth: 3,
+            borderLeftWidth: 2,
+            borderColor: FOTD.HeaderShadow,
+            position: 'relative',
+            bottom: 22,
+            marginLeft: 10,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Text
+            style={{ fontWeight: 'bold', fontSize: 25, textAlign: 'center' }}
+          >
+            X
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };

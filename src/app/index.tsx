@@ -15,6 +15,7 @@ import type { StateType } from '../types';
 import { loadFonts } from '../assets/fonts';
 import { Balloons } from '../components/ui/Balloons';
 import LanguagePicker from '../utils/translation_picker';
+import { UserProvider } from '../context/UserContext';
 
 export default function Home() {
   const [cloudState, setCloudState] = useState<StateType>('default');
@@ -49,32 +50,34 @@ export default function Home() {
     setCloudState('closed');
     setPauseBalloon(true);
     console.log('routing');
-    setTimeout(() => router.push('/menu'), 700);
+    setTimeout(() => router.push('/auth'), 700);
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
-        <Clouds currentState={cloudState} />
-        <FactOfTheDay
-          description={t('FOTD.1')}
-          cloudState={cloudState}
-          setCloudState={setCloudState}
-        />
-        <MainBalloon
-          pauseBalloon={pauseBalloon}
-          setPauseBalloon={setPauseBalloon}
-        />
-        <Balloons />
-        <PrimaryButton
-          variant={{ size: 'large', color: 'yellow' }}
-          onTap={startRouting}
-        >
-          {t('buttons.start')}
-        </PrimaryButton>
-      </LinearGradient>
-      <LanguagePicker />
-    </SafeAreaView>
+    <UserProvider>
+      <SafeAreaView style={styles.container}>
+        <LinearGradient colors={HomeScreenGradient} style={styles.gradient}>
+          <Clouds currentState={cloudState} />
+          <FactOfTheDay
+            description={t('FOTD.1')}
+            cloudState={cloudState}
+            setCloudState={setCloudState}
+          />
+          <MainBalloon
+            pauseBalloon={pauseBalloon}
+            setPauseBalloon={setPauseBalloon}
+          />
+          <Balloons />
+          <PrimaryButton
+            variant={{ size: 'large', color: 'yellow' }}
+            onTap={startRouting}
+          >
+            {t('buttons.start')}
+          </PrimaryButton>
+        </LinearGradient>
+        <LanguagePicker />
+      </SafeAreaView>
+    </UserProvider>
   );
 }
 const styles = StyleSheet.create({

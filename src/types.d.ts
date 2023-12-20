@@ -10,7 +10,7 @@ type Nullable<T> = T | null;
 export interface IUser {
   name: string;
   age: number;
-  phone: string;
+  phone: number;
   password: string;
 }
 
@@ -66,7 +66,7 @@ export interface DialogueState {
   redirect?: (params?: string | number) => number;
 }
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export type CloudStateType = 'default' | 'open' | 'closed';
 export type CloudStateDispatcher = Dispatch<SetStateAction<CloudStateType>>;
@@ -81,10 +81,10 @@ export interface SignUpType extends logInType {
 }
 export interface UserType extends SignUpType {
   _id: string;
-  completedModules: [],
-  preferredLanguage: string,
+  completedModules: [];
+  preferredLanguage: string;
   coins: number;
   achivements: [];
-  phone?: string,
-  sex?: string,
+  phone?: string;
+  sex?: string;
 }

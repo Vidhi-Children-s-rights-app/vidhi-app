@@ -1,25 +1,30 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Modal, View, Text, Pressable, StyleSheet, Image } from "react-native";
-import earth from "../assets/images/earth.png";
-import { MotiView } from "moti";
-import { ButtonColorVariants, FOTD } from "../constants";
-
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
+import { icons } from '../assets/images';
+import { MotiView } from 'moti';
+import { ButtonColorVariants, FOTD } from '../constants';
+import language from '../localizations/languages';
+import { useUserContext } from '../context/UserContext';
 
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const { i18n } = useTranslation(); //i18n instance
 
+  const { updateLanguage } = useUserContext();
+
   //array with all supported languages
   const languages = [
-    { name: "hi", label: "Hindi" },
-    { name: "en", label: "English" },
+    { name: 'hi', label: language.hindi },
+    { name: 'tm', label: language.tamil },
+    { name: 'en', label: language.english }
   ];
 
   const LanguageItem = ({ name, label }: { name: string; label: string }) => (
     <Pressable
       onPress={() => {
-        i18n.changeLanguage(name); //changes the app language
+        i18n.changeLanguage(name);
+        updateLanguage(name); //changes the app language
         setModalVisible(!modalVisible);
       }}
     >
@@ -29,59 +34,78 @@ const LanguagePicker = () => {
 
   return (
     <View style={styles.wrapper}>
-        {/* animationType="slide"
+      {/* animationType="slide"
         transparent={true}
         visible={modalVisible}
          onRequestClose={() => {
         setModalVisible(!modalVisible);
         }} */}
-          {modalVisible && <MotiView
-        style={styles.modal}
-          >
-            {languages.map((lang) => (
-              <LanguageItem {...lang} key={lang.name} />
-            ))}
-          </MotiView>}
-      <Pressable 
-        onPress={() => setModalVisible(!modalVisible)}>
-        <Image style={styles.earth} source={earth}/>
+      <MotiView
+        style={{
+          height: '150%',
+          width: '75%',
+          bottom: '-70%',
+          right: '-30%'
+        }}
+        from={{
+          scale: 0
+        }}
+        animate={{
+          scale: modalVisible ? 1 : 0
+        }}
+        transition={{
+          type: 'timing',
+          duration: 300
+        }}
+      >
+        <MotiView style={styles.modal}>
+          {languages.map((lang, index) => (
+            <LanguageItem {...lang} key={index} />
+          ))}
+        </MotiView>
+      </MotiView>
+      <Pressable onPress={() => setModalVisible(!modalVisible)}>
+        <Image style={styles.earth} source={icons.earth} />
       </Pressable>
     </View>
   );
 };
 
-const styles=StyleSheet.create({
-  earth:{
-    width:50,
-    height:50,
-    
+const styles = StyleSheet.create({
+  earth: {
+    width: 50,
+    height: 50,
+    bottom: '2%',
+    right: '2%'
   },
-  wrapper:{
-    width:'100%',
-    position:'absolute',
-    bottom:0,
-    display:'flex',
-    alignItems:'flex-end',
-    padding:10,
+  wrapper: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    flexDirection: 'column',
+    padding: 10
   },
-  modal:{
-    width:120,
-    borderRadius:10,
-    padding:6,
+  modal: {
+    width: 120,
+    borderRadius: 10,
+    padding: 6,
     backgroundColor: FOTD.HeaderBackground,
     borderBottomWidth: 3,
     borderLeftWidth: 2,
-    borderColor:FOTD.HeaderShadow
+    borderColor: FOTD.HeaderShadow
   },
-  text:{
-    fontSize:18,
-    fontWeight:'bold',
-      color: ButtonColorVariants.wood.text,
-      padding: 6,
-      margin:3,
-      borderRadius:15,
-      backgroundColor: ButtonColorVariants.wood.background,
-      textAlign:'center'
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: ButtonColorVariants.wood.text,
+    padding: 6,
+    margin: 3,
+    borderRadius: 15,
+    backgroundColor: ButtonColorVariants.wood.background,
+    textAlign: 'center'
   }
 });
 

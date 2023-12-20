@@ -3,6 +3,7 @@ import "intl-pluralrules"
 import { initReactI18next } from "react-i18next";
 import en from "./en";
 import hi from "./hi";
+import tm from "./tm";
 
 const resources = {
   en: {
@@ -10,6 +11,9 @@ const resources = {
   },
   hi: {
     translation: hi,
+  },
+  tm: {
+    translation: tm,
   },
 };
 
