@@ -1,8 +1,10 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useTranslation } from 'react-i18next';
 
 const JoinSchool = () => {
+  const {t}=useTranslation();
   return (
     <LinearGradient
       colors={['#241137', '#24113700']}
@@ -30,7 +32,7 @@ const JoinSchool = () => {
           textAlign: 'center'
         }}
       >
-        Join your School
+        {t('join_school')}
       </Text>
     </LinearGradient>
   );

@@ -1,11 +1,13 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
+import { useTranslation } from 'react-i18next';
 
 const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
   remTime = '00:00:00',
   remainingQ = 6
 }) => {
+  const {t}=useTranslation();
   return (
     <View
       style={{
@@ -57,8 +59,10 @@ const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
           bottom: '10%'
         }}
       >
-        Next question in
+        {t('next_ques.pre')}
         <Text style={{ color: '#FFFFFF' }}> {remTime}</Text>
+        {t('next_ques.post')}
+
       </Text>
       <Text
         style={{
@@ -82,7 +86,7 @@ const QuizCardContent: React.FC<{ remTime?: string; remainingQ: number }> = ({
           bottom: '31%'
         }}
       >
-        remaining
+        {t('remaining')}
       </Text>
     </View>
   );
