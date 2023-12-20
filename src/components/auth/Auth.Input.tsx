@@ -5,20 +5,15 @@ import { MotiPressable } from 'moti/interactions';
 
 import { AuthModalColors as COLORS, KeyboardVariants } from '../../constants';
 import ChatIcon from '../ui/ChatIcon';
-import {
-  IUser,
-  KeyboardVariants as KeyboardVariantProps,
-  StateDispatcher
-} from '../../types';
+import { IUser, StateDispatcher } from '../../types';
 import { useUserContext } from '../../context/UserContext';
 import { useTranslation } from 'react-i18next';
 
 export const Input: React.FC<{
   field: keyof IUser;
-  variant: KeyboardVariantProps;
   onTap: (params: any) => any;
   setIsTyping: StateDispatcher<boolean>;
-}> = ({ field, variant, onTap, setIsTyping }) => {
+}> = ({ field, onTap, setIsTyping }) => {
   const textRef = useRef<TextInput>(null);
   const { t } = useTranslation();
   const { updateUser } = useUserContext();
@@ -64,7 +59,7 @@ export const Input: React.FC<{
             fontSize: 12,
             color: COLORS['text']
           }}
-          keyboardType={KeyboardVariants[variant]}
+          keyboardType={KeyboardVariants[field]}
           cursorColor={COLORS['text']}
           placeholder={t('login_ques.name_input')}
           placeholderTextColor={COLORS['shadow']}

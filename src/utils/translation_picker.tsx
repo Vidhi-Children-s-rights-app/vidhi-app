@@ -9,6 +9,7 @@ import { useUserContext } from '../context/UserContext';
 
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isModalClosed, setIsModalClosed] = useState(true);
   const { i18n } = useTranslation(); //i18n instance
 
   const { updateLanguage } = useUserContext();
@@ -26,6 +27,11 @@ const LanguagePicker = () => {
         i18n.changeLanguage(name);
         updateLanguage(name); //changes the app language
         setModalVisible(!modalVisible);
+        if (!isModalClosed) {
+          setTimeout(() => {
+            setIsModalClosed(true);
+          }, 300);
+        } else setIsModalClosed(false);
       }}
     >
       <Text style={styles.text}>{label}</Text>
@@ -33,7 +39,7 @@ const LanguagePicker = () => {
   );
 
   return (
-    <View style={styles.wrapper}>
+    <View style={{ ...styles.wrapper, height: isModalClosed ? '10%' : 'auto' }}>
       {/* animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -55,7 +61,7 @@ const LanguagePicker = () => {
         }}
         transition={{
           type: 'timing',
-          duration: 300
+          duration: 400
         }}
       >
         <MotiView style={styles.modal}>
@@ -64,7 +70,16 @@ const LanguagePicker = () => {
           ))}
         </MotiView>
       </MotiView>
-      <Pressable onPress={() => setModalVisible(!modalVisible)}>
+      <Pressable
+        onPress={() => {
+          setModalVisible(!modalVisible);
+          if (!isModalClosed) {
+            setTimeout(() => {
+              setIsModalClosed(true);
+            }, 400);
+          } else setIsModalClosed(false);
+        }}
+      >
         <Image style={styles.earth} source={icons.earth} />
       </Pressable>
     </View>
@@ -86,7 +101,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     flexDirection: 'column',
-    padding: 10
+    padding: 10,
+    zIndex: 40
   },
   modal: {
     width: 120,

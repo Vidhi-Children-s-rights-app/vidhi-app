@@ -45,12 +45,9 @@ interface ModuleState {
   isCompleted: boolean;
 }
 
-export type KeyboardVariants = 'email' | 'text' | 'number' | 'phone';
-
 type ResponseType =
   | {
       type: 'input';
-      variant: KeyboardVariants;
       key: keyof IUser;
     }
   | {
@@ -67,9 +64,6 @@ export interface DialogueState {
 }
 
 import { Dispatch, SetStateAction } from 'react';
-
-export type CloudStateType = 'default' | 'open' | 'closed';
-export type CloudStateDispatcher = Dispatch<SetStateAction<CloudStateType>>;
 
 export interface logInType {
   email: string;

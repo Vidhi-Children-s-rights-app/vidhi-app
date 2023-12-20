@@ -84,7 +84,6 @@ export default function AuthView({
       {!isTyping && response?.type === 'input' && (
         <Input
           field={response.key}
-          variant={response.variant}
           onTap={loadNext}
           setIsTyping={setIsTyping}
         />

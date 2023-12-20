@@ -47,12 +47,11 @@ export default function Menu() {
               aspectRatio: 370 / 328,
               position: 'absolute',
               left: '5%',
-              bottom: '35%',
-              backgroundColor: 'red'
+              bottom: '35%'
             }}
           >
             <Image
-              source={school.active}
+              source={school.disabled}
               style={{ width: '100%', height: '100%' }}
             ></Image>
           </Pressable>

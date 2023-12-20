@@ -24,7 +24,6 @@ export const script: DialogueState[] = [
     mascotDialogue: 'login_ques.name_ask',
     response: {
       type: 'input',
-      variant: 'number',
       key: 'phone'
     },
     redirect: () => 16
@@ -53,7 +52,6 @@ export const script: DialogueState[] = [
     mascotDialogue: 'login_ques.name',
     response: {
       type: 'input',
-      variant: 'text',
       key: 'name'
     },
     redirect: (params) =>
@@ -66,22 +64,20 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 8,
-    mascotDialogue:'login_ques.nice_to_meet_you',
+    mascotDialogue: 'login_ques.nice_to_meet_you'
   },
   {
     currentIndex: 9,
     mascotDialogue: 'login_ques.age',
     response: {
       type: 'input',
-      variant: 'number',
       key: 'age'
     },
     redirect: (params) => ((params as number) < 18 ? 10 : 11)
   },
   {
     currentIndex: 10,
-    mascotDialogue:
-      'login_ques.patience_text',
+    mascotDialogue: 'login_ques.patience_text',
     redirect: () => 12
   },
   {
@@ -93,7 +89,6 @@ export const script: DialogueState[] = [
     mascotDialogue: 'login_ques.num_ask_nicely',
     response: {
       type: 'input',
-      variant: 'phone',
       key: 'phone'
     },
     redirect: (params) =>
@@ -106,11 +101,9 @@ export const script: DialogueState[] = [
   },
   {
     currentIndex: 14,
-    mascotDialogue:
-      'login_ques.last_step',
+    mascotDialogue: 'login_ques.last_step',
     response: {
       type: 'input',
-      variant: 'text',
       key: 'password'
     }
   },
@@ -124,7 +117,6 @@ export const script: DialogueState[] = [
     mascotDialogue: 'login_ques.pass_ask',
     response: {
       type: 'input',
-      variant: 'number',
       key: 'password'
     },
     redirect: () => 3

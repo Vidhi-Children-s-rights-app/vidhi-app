@@ -49,7 +49,6 @@ export default function Home() {
   const startRouting = () => {
     setCloudState('closed');
     setPauseBalloon(true);
-    console.log('routing');
     setTimeout(() => router.push('/auth'), 700);
   };
 
@@ -74,8 +73,8 @@ export default function Home() {
           >
             {t('buttons.start')}
           </PrimaryButton>
+          <LanguagePicker />
         </LinearGradient>
-        <LanguagePicker />
       </SafeAreaView>
     </UserProvider>
   );

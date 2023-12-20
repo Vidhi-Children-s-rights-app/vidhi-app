@@ -52,7 +52,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
         user as IUser | undefined,
         value as string
       );
-    setUser(updatedUserDetails);
+    setUser({ ...user, ...updatedUserDetails });
     console.log('Updated user: ', user);
   };
   const updateLanguage = (newLanguage: string) => {
