@@ -20,9 +20,12 @@ export default function AuthView({
   loadNext: () => void;
 }) {
   const [isTyping, setIsTyping] = useState<boolean>(true);
-  const { user } = useUserContext();
+  const { getUser } = useUserContext();
   const { t } = useTranslation();
-  const dialogue = hydrateDialogue(t(mascotDialogue as string), user?.name);
+  const dialogue = hydrateDialogue(
+    t(mascotDialogue as string),
+    getUser()?.name
+  );
 
   return (
     <View

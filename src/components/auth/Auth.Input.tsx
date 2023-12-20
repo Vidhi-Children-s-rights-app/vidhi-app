@@ -8,6 +8,7 @@ import ChatIcon from '../ui/ChatIcon';
 import { IUser, StateDispatcher } from '../../types';
 import { useUserContext } from '../../context/UserContext';
 import { useTranslation } from 'react-i18next';
+import mixpanel from '../../configs/mixpanel.config';
 
 export const Input: React.FC<{
   field: keyof IUser;
@@ -16,7 +17,7 @@ export const Input: React.FC<{
 }> = ({ field, onTap, setIsTyping }) => {
   const textRef = useRef<TextInput>(null);
   const { t } = useTranslation();
-  const { updateUser } = useUserContext();
+  const { getUser, updateUser } = useUserContext();
 
   return (
     <View
@@ -86,8 +87,13 @@ export const Input: React.FC<{
           const input = (
             textRef.current as unknown as { value: string | number }
           ).value;
-          updateUser(field, input ?? '');
-          console.log(input);
+          updateUser(field, input);
+          if (field === 'password') {
+            console.log('Tracking user details...');
+            const user = getUser();
+            mixpanel.identify((user as IUser).phone.toString());
+            mixpanel.track('user_created', { user_data: user });
+          }
           setTimeout(() => {
             onTap(input);
             setIsTyping(true);
